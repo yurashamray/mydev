@@ -1,0 +1,13 @@
+mysql -h <mysql_db_container IP> -P 3306 -uroot -psecret123
+
+use mifiib;
+
+insert into user_list (id, name, surname) values (4, 'Carl', 'Adamson');
+
+insert into user_list (id, name, surname) values (5, 'Apache', 'Kid');
+
+insert into user_list (id, name, surname) values (6, 'Bill', 'Applegate');
+
+insert into user_list (id, name, surname) values (7, 'Charles', 'Allen');
+
+insert into user_list (id, name, surname) values (8, 'Ernest', 'Antony');
