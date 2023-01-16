@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  php-apache:
+    ports:
+      - "80:80"
+    image: shamray7:latest
+    volumes:
+      - ./www:/var/www/html
+  mysql:
+    ports:
+      - "3306:3306"
+    build: './build/mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: "secret123"
+      MYSQL_DATABASE: "mifiib"
+    volumes:
+      - dbData:/var/lib/mysql
+volumes:
+  www:
+  dbData:
