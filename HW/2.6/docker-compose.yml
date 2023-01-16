@@ -1,0 +1,53 @@
+# версия docker-compose, матрица версий - https://docs.docker.com/compose/compose-file/compose-file-v3/
+version: '3.9'
+# список наших сервисов (контейнеров)
+services:
+  # контейнер является базой данных и содержит в себе базу данных MySQL
+  mysql_db_container:
+    # указываем путь к MySQL образу и говорим что его надо собрать 
+    build: ./build/mysql
+    # монтируем директорию и указываем файл из которого будет создана база данных
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    # restart: always - означает, что docker-compose перезапустит контейнер, если тот вдруг остановится
+    # также, docker-compose не будет заново создавать новый образ, а будет использовать существующий 
+    restart: always
+    # маршрутизируем порты
+    ports:
+      - 3306:3306
+    environment:
+      # устанавливаем пароль для пользователя root
+      MYSQL_ROOT_PASSWORD: secret123
+      # устанавливаем имя для нашей базы данных
+      MYSQL_DATABASE: mifiib
+  
+  # контейнер является веб-сервером и выводит содержимое базы данных.
+  php_apache_container:
+    # указываем путь к PHP образу и говорим что его надо собрать 
+    build: ./build/php
+    # монтируем директорию (./www - директория на хосте монтируется в /var/www/html - в контейнере)
+    volumes:
+      - ./www:/var/www/html
+    # restart: always - означает, что docker-compose перезапустит контейнер, если тот вдруг остановится
+    # также, docker-compose не будет заново создавать новый докер образ, а будет использовать существующий
+    restart: always
+    # маршрутизируем порты
+    ports:
+      - 80:80
+    # указываем, что первым должен стартовать mysql_db_container
+    depends_on:
+      - mysql_db_container
+
+  # контейнер клиента для изменения содержимого базы данных с помощью shell
+  client_container:
+    # указываем путь к образу клиента и говорим что его надо собрать 
+    build: ./build/client
+    # аналог ключа -t в команде docker, позволяет держать контейнер запущеным
+    tty: true
+    # указываем, что первым должен стартовать mysql_db_container
+    depends_on:
+      - mysql_db_container
+
+volumes:
+  www:
+  init:
