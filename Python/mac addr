@@ -1,0 +1,13 @@
+import re
+
+mac_address = input('Please enter a MAC address: ')
+valid = re.match('(?=[a-f0-9]{2}:){5}[a-f0-9]{2}', mac_address, re.I)
+
+if valid:
+    mac_as_int = int(mac_address.replace(':', ''), 16)
+
+    for address in range(mac_as_int + 1, mac_as_int + 4):
+        output = '{:012X}'.format(address)
+        print('{}:{}:{}:{}:{}:{}'.format(output[0:2], output[2:4], output[4:6], output[6:8], output[8:10], output[10:12]))
+else:
+    print('Invalid MAC address')
