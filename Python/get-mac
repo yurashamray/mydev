@@ -1,3 +1,16 @@
+import netifaces
+
+netifaces.interfaces()
+# ['lo', 'eth0', 'tun2']
+
+netifaces.ifaddresses('eth0')[netifaces.AF_LINK]
+# [{'addr': '08:00:27:50:f2:51', 'broadcast': 'ff:ff:ff:ff:ff:ff'}]
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 import subprocess
 
 def get_mac_address(ip_address):
