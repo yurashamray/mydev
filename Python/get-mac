@@ -1,0 +1,10 @@
+import subprocess
+
+def get_mac_address(ip_address):
+    arp_command = ['arp', '-n', ip_address]
+    output = subprocess.check_output(arp_command).decode()
+    mac_address = output.split()[3]
+    return mac_address
+
+mac_address = get_mac_address('192.168.1.1')
+print(mac_address)
