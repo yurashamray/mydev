@@ -1,6 +1,17 @@
+# Скрип для смены MAC-адреса
+# Yuriy Shamray (MIFIIB)
+
+# Импортируем модуль subprocess для соединение c потоками стандартного ввода/вывода
+# Импортируем модуль argparse для работы с аргументами командной строки
 import subprocess
 import argparse
-import tqdm
+
+# Импортируем модуль tqdm как индикатор прогресса
+import time
+from tqdm import tqdm
+mylist = [1,2,3,4,5,6,7,8]
+for i in tqdm(mylist):
+    time.sleep(1)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--interface', dest='inter_arg', help='Type interface name here.')
