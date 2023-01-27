@@ -15,3 +15,14 @@ for i in trange(10, file=sys.stdout, desc='outer loop'):
   
     for j in trange(100,file=sys.stdout, leave=False, unit_scale=True, desc='inner loop'):  
         do_another_something()  
+######################################################
+
+# importing modules  
+from tqdm import trange  
+from time import sleep  
+  
+# creating loop  
+for i in trange(10, desc="loop "):  
+    # slowing the for loop  
+    sleep(0.1)  
+    
