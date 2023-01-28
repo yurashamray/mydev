@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #
-# чейнджер MAC-адресов в Linux системах
+# чейнджер MAC-адресов в Linux
+# Yuriy Shamray - MIFIIB
 #
 # Подключаем модули
 import subprocess
@@ -9,8 +10,8 @@ import random
 import string
 import re
 import os
-import colorama
 from tqdm import tqdm, trange
+import colorama
 from time import sleep
 from colorama import Fore, Style
 
@@ -137,14 +138,11 @@ def change_mac(interface, new_mac):
     subprocess.call(["ip", "link", "set", "dev", interface, "address", new_mac])
     subprocess.call(["ip", "link", "set", "dev", interface, "up"])
 
-    # Обработка изменений
-    #print("Идёт изменение...")
-    #print("")
+    #Обработка изменений
+    print("Идёт изменение...")
 
-# Индикатор прогресса
-for i in tqdm(range(100), desc="Идёт изменение:"):
-    # Симуляция процесса выполнения
-    sleep(.5)
+    for i in tqdm(range(10), bar_format='{percentage}%'):
+        sleep(.5)
 
     # Выводим результаты изменения, а также (старый MAC-адрес и новый MAC-адрес)
     print(Fore.GREEN + "МАС-адрес изменён УСПЕШНО!")
