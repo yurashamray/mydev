@@ -3,14 +3,15 @@
 # чейнджер MAC-адресов в Linux системах
 #
 # Подключаем модули
+import subprocess
 import argparse
 import random
-import re
 import string
-import subprocess
+import re
 import os
-from time import sleep
 import colorama
+from tqdm import tqdm, trange
+from time import sleep
 from colorama import Fore, Style
 
 # Шаблон для проверки MAC-адреса
@@ -137,8 +138,13 @@ def change_mac(interface, new_mac):
     subprocess.call(["ip", "link", "set", "dev", interface, "up"])
 
     # Обработка изменений
-    print("Идёт изменение...")
-    print("")
+    #print("Идёт изменение...")
+    #print("")
+
+# Индикатор прогресса
+for i in tqdm(range(100), desc="Идёт изменение:"):
+    # Симуляция выполнения
+    sleep(.5)
 
     # Выводим результаты изменения, а также (старый MAC-адрес и новый MAC-адрес)
     print(Fore.GREEN + "МАС-адрес изменён УСПЕШНО!")
