@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# чейнджер MAC-адресов в Linux
+# Скрипт для смены MAC-адреса в Linux
 # Yuriy Shamray - MIFIIB
 #
 # Подключаем модули
