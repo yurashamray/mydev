@@ -17,7 +17,7 @@ valid_mac_pattern = "^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$"
 # Функция для проверки запущен ли скрипт с правами sudo или root
 def check_privileges():
     if not os.environ.get("SUDO_UID") and os.geteuid() != 0:
-        print("Вам нужно запустить этот скрипт с sudo или как root.")
+        print("ВНИМАНИЕ! Вам нужно запустить этот скрипт с sudo или как root.")
         quit()
 
 # Функция для генерации случайного MAC-адреса
@@ -84,7 +84,7 @@ def get_arguments():
                 interface_not_checked = False
 
             # Запрос ввода имени интерфейса
-            args.interface = input("Interface > ")
+            args.interface = input("Введите имя интерфейса > ")
             print("")
 
             # Установить для «interface_not_checked» значение False
@@ -92,7 +92,7 @@ def get_arguments():
 
         # Если предоставленное имя интерфейса находится в списке "avaliable_interfaces"
         if args.interface in avaliable_interfaces:
-            print(f"Selected interface: [{args.interface}]")
+            print(f"Выбранный интерфейс: [{args.interface}]")
             print("")
             break
 
@@ -150,7 +150,7 @@ def change_mac(interface, new_mac):
 
     # Выводим результаты изменения, а также (старый MAC-адрес и новый MAC-адрес)
     print("Завершено УСПЕШНО!")
-    print(f"[{interface}] старый MAC-адрес {old_mac.upper()} новый MAC-адрес {new_mac}")
+    print(f"[{interface}] Старый MAC-адрес: {old_mac.upper()} | Новый MAC-адрес: {new_mac}")
 
 
 # ВЫЗОВЫ ФУНКЦИЙ ПО УМОЛЧАНИЮ
