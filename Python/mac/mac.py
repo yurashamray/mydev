@@ -11,7 +11,7 @@ import subprocess
 import os
 from time import sleep
 import colorama
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 
 # Шаблон для проверки MAC-адреса
 valid_mac_pattern = "^(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})$"
@@ -27,33 +27,19 @@ def check_privileges():
 def generate_random_mac_address():
     uppercased_hexdigits = ''.join(set(string.hexdigits.upper()))
 
-    # Пустая переменная для случайного MAC-адреса
     mac = ""
-
-    # Loop will happen 6 times in index1, where which time in index1, index2 loop will happen 2 times
     for index1 in range(6):
         for index2 in range(2):
-            # If it is the 2nd index2 loop
             if index2 == 0:
-                # Attribute any value from the hexdigits to the MAC address
                 mac += random.choice(uppercased_hexdigits)
-            # If it is the 1st index2 loop
             elif index2 == 1:
-                # Attribute a value (0, 2, 4, 6, 8, A, C, E)
                 mac += random.choice("02468ACE")
-
-        # After define 2 digits, insert a :
         mac += ":"
-
-    # Return the random MAC address, but removing the : after the final digit
     return mac.strip(":")
 
 # Функция для получения текущего MAC-адреса
 def get_current_mac():
-    # Вызывает команду "ip link show" и декодирует вывод в виде строки
     output = subprocess.check_output("ip link show", shell=True).decode()
-
-    # Используем регулярное выражение, чтобы вывести текущий MAC-адрес
     return re.search("ether (.+) ", output).group().split()[1].strip()
 
 # Функция для определения аргументов argparser
@@ -63,7 +49,6 @@ def get_arguments():
     parser.add_argument("-m", "--mac", help="Новый MAC-адрес, который получит выбранный интерфейс")
     parser.add_argument("-r", "--random", action="store_true", help="Генерирует случайный MAC-адрес")
 
-    # Передайте определенные аргументы парсеру из argparse
     args = parser.parse_args()
 
     # Определяем все доступные сетевые интерфейсы
@@ -83,7 +68,7 @@ def get_arguments():
         if not args.interface or args.interface not in avaliable_interfaces:
             # Показывать ошибку, только если первое определенное значение интерфейса (полученное из аргумента -i/--interface) недоступно
             if args.interface and interface_not_checked == True:
-                print(Fore.RED + f"ОШИБКА - Интерфейс [{args.interface}] недоступен.")
+                print(Fore.RED + f"ОШИБКА! Интерфейс [{args.interface}] недоступен.")
                 print(Style.RESET_ALL)
                 interface_not_checked = False
 
@@ -101,9 +86,9 @@ def get_arguments():
             break
 
         # Если предоставленное имя интерфейса отсутствует в списке "avaliable_interfaces"
-        print(Fore.RED + f"ОШИБКА - Интерфейс [{args.interface}] недоступен.")
+        print(Fore.RED + f"ОШИБКА! Интерфейс [{args.interface}] недоступен.")
         print(Style.RESET_ALL)
-        print("Avaliable interfaces: " + str(avaliable_interfaces).strip("[]").replace("'", "").replace(", ", ", "))
+        print("Доступные интерфейсы: " + str(avaliable_interfaces).strip("[]").replace("'", "").replace(", ", ", "))
 
     # Обработка значений MAC-адреса
     # Если в качестве аргумента не было передано значение MAC-адреса
@@ -122,16 +107,16 @@ def get_arguments():
         else:
             while True:
                 # Запрос ввода MAC-адреса
-                args.mac = input("MAC-адрес > ")
+                args.mac = input("Введите MAC-адрес > ")
 
                 # Если предоставленный MAC-адрес неверный
                 if not re.match(valid_mac_pattern, args.mac):
-                    print(Fore.RED + "ОШИБКА - Неверный MAC-адрес.")
+                    print(Fore.RED + "ОШИБКА! Неверный MAC-адрес.")
                     print(Style.RESET_ALL)
 
                 # Если предоставленный MAC-адрес совпадает с текущим MAC-адресом
                 if args.mac.upper() == old_mac.upper():
-                    print(Fore.RED + "ОШИБКА - Введенный MAC-адрес совпадает с текущим MAC-адресом.")
+                    print(Fore.RED + "ОШИБКА! Введенный MAC-адрес совпадает с текущим MAC-адресом.")
                     print(Style.RESET_ALL)
 
                 # Если предоставленный MAC-адрес действителен и не совпадает с текущим MAC-адресом
@@ -156,7 +141,7 @@ def change_mac(interface, new_mac):
     print("")
 
     # Выводим результаты изменения, а также (старый MAC-адрес и новый MAC-адрес)
-    print(Fore.GREEN + "Завершено УСПЕШНО!")
+    print(Fore.GREEN + "МАС-адрес изменён УСПЕШНО!")
     print(Style.RESET_ALL)
     print(Fore.RED + f"[{interface}] Старый MAC-адрес: {old_mac.upper()}")
     print(Fore.GREEN + f"[{interface}] Новый MAC-адрес: {new_mac}")
@@ -169,7 +154,7 @@ check_privileges()
 # Сохранить старый MAC-адрес
 old_mac = get_current_mac()
 
-# Получите аргументы
+# Аргументы
 args = get_arguments()
 
 # Изменить MAC-адрес
