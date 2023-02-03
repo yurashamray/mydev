@@ -25,6 +25,7 @@ def check_privileges():
         print(Style.RESET_ALL)
         quit()
 
+
 # Функция для генерации случайного MAC-адреса
 def generate_random_mac_address():
     uppercased_hexdigits = ''.join(set(string.hexdigits.upper()))
@@ -39,10 +40,12 @@ def generate_random_mac_address():
         mac += ":"
     return mac.strip(":")
 
+
 # Функция для получения текущего MAC-адреса
 def get_current_mac():
     output = subprocess.check_output("ip link show", shell=True).decode()
     return re.search("ether (.+) ", output).group().split()[1].strip()
+
 
 # Функция для определения аргументов argparser
 def get_arguments():
@@ -150,6 +153,7 @@ def change_mac(interface, new_mac):
     print(Fore.RED + f"[{interface}] Старый MAC-адрес: {old_mac.upper()}")
     print(Fore.GREEN + f"[{interface}] Новый MAC-адрес: {new_mac}")
     print(Style.RESET_ALL)
+
 
 # ВЫЗОВЫ ФУНКЦИЙ ПО УМОЛЧАНИЮ
 # Проверяем привилегии пользователя
