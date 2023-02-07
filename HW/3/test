@@ -1,7 +1,15 @@
+import yaml
+
+
 def input_(msg):
-    input_data = input(msg)
-    if not input_data.isdigit(): return input_("Вы ввели не число или оно не является целым. Введите целое число: ")
-    if input_data == int and 100 <= input_data <= 999 and input_data % 2 == 0 and input_data % 3 == 0: return input_("Ваше число удовлетворяет условиям. Введите число:")
+    input_data_str = input(msg)
+    if isinstance(input_data_str, float) or input_data_str.isalpha():
+        return input_("Вы ввели не число. Введите число: ")
+    input_data_int = yaml.safe_load(input_data_str)
+    if type(input_data_int) == int and 100 <= input_data_int <= 999 and input_data_int % 2 == 0 and input_data_int % 3 == 0:
+        return input_("Ваше число удовлетворяет условиям. Введите число: ")
     else:
-        return input_("Ваше число не удовлетворяет условиям. Введите число:")
-print(input_("Введите целое число: "))
+        return input_("Ваше число не удовлетворяет условиям. Введите число: ")
+
+
+print(input_("Введите число: "))
