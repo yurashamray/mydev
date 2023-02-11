@@ -57,7 +57,7 @@ def game():
             theBoard[move] = turn
             count += 1
         else:
-            print(Fore.YELLOW + "Место уже занято! Выберите другую позицию!", Style.RESET_ALL)
+            print(Fore.YELLOW + "Место уже занято! Выберите другую клетку!", Style.RESET_ALL)
             continue
 
         if count >= 5:
