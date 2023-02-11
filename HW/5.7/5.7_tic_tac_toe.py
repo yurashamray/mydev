@@ -76,7 +76,7 @@ def game():
                 print("\nИгра Окончена!")
                 print(Fore.GREEN + "**** Игрок " + turn + " выиграл! ****", Style.RESET_ALL)
                 break
-            elif theBoard['1'] == theBoard['4'] == theBoard['7'] != ' ':  # вниз по левой стороне
+            elif theBoard['1'] == theBoard['4'] == theBoard['7'] != ' ':  # по левой стороне
                 printboard(theBoard)
                 print("\nИгра Окончена!")
                 print(Fore.GREEN + "**** Игрок " + turn + " выиграл! ****", Style.RESET_ALL)
@@ -86,17 +86,17 @@ def game():
                 print("\nИгра Окончена!")
                 print(Fore.GREEN + "**** Игрок " + turn + " выиграл! ****", Style.RESET_ALL)
                 break
-            elif theBoard['3'] == theBoard['6'] == theBoard['9'] != ' ':  # вниз по правой стороне
+            elif theBoard['3'] == theBoard['6'] == theBoard['9'] != ' ':  # по правой стороне
                 printboard(theBoard)
                 print("\nИгра Окончена!")
                 print(Fore.GREEN + "**** Игрок " + turn + " выиграл! ****", Style.RESET_ALL)
                 break
-            elif theBoard['7'] == theBoard['5'] == theBoard['3'] != ' ':  # вниз по диагонали
+            elif theBoard['7'] == theBoard['5'] == theBoard['3'] != ' ':  # по диагонали
                 printboard(theBoard)
                 print("\nИгра Окончена!")
                 print(Fore.GREEN + "**** Игрок " + turn + " выиграл! ****", Style.RESET_ALL)
                 break
-            elif theBoard['1'] == theBoard['5'] == theBoard['9'] != ' ':  # вверх по диагонали
+            elif theBoard['1'] == theBoard['5'] == theBoard['9'] != ' ':  # по диагонали
                 printboard(theBoard)
                 print("\nИгра Окончена!")
                 print(Fore.GREEN + "**** Игрок " + turn + " выиграл! ****", Style.RESET_ALL)
