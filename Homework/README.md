@@ -1,4 +1,4 @@
-![mifiib2](https://user-images.githubusercontent.com/55129997/218626567-3ed42062-fad8-471a-b37f-17f12ef749fd.jpg)
+
+![2](https://user-images.githubusercontent.com/55129997/219011502-746e65fe-3c33-4845-b745-981f88902949.png)
 ## 💻Практические задания (Homework)
-* M - #.Модуль
-* U - #.Юнит
+
