@@ -25,9 +25,9 @@ def send_http_request():
     headers = request.headers   #getting header from our api call
     
     method = request_data["method"] #provide method in your api call from script.py
-    target = request_data["target"] #you need to provide targer in your api call from script.py
+    target = request_data["target"] #you need to provide target in your api call from script.py
     payload = request_data.get("payload", None)
-    #this sending request to our targer
+    #this sending request to our target
     response = requests.request(method, target, headers=headers, data=payload)
     return response.content, response.status_code
 
