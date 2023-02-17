@@ -5,3 +5,17 @@ POST
 GET
 
 {"target":"192.168.1.0", "count": "20"}
+
+
+def _ansi_style_supressor(func: Callable[..., Any]) -> Callable[..., Any]:
+    @functools.wraps(func)
+    def wrapper(*args: Tuple[Any, ...], **kwargs: Dict[str, Any]) -> Any:
+        if args and isinstance(args[0], str) and args[0].startswith('WARNING: This is a development server.'):
+            return ''
+        return func(*args, **kwargs)
+
+    return wrapper
+
+...
+
+werkzeug.serving._ansi_style = _ansi_style_supressor(werkzeug.serving._ansi_style)
