@@ -1,5 +1,7 @@
 POST
+
 {"Header": "Content-type", "Header-value": "text", "Target":"www.google.com", "Method": "GET"}
 
 GET
+
 {"target":"192.168.1.0", "count": "20"}
