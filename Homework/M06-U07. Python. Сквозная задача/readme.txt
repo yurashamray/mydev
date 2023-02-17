@@ -65,7 +65,7 @@ if __name__ == '__main__':
 pip install requests flask
 python simple_proxy.py
 # Test
-curl --location --request POST 'http://127.0.0.1:5000/https://postb.in/1590933774850-8074143861886' \
+curl --location --request POST 'http://127.0.0.1:3012/https://postb.in/1590933774850-8074143861886' \
 --header 'X-Status: Awesome' \
 --header 'Content-Type: application/json' \
 --data-raw '{
