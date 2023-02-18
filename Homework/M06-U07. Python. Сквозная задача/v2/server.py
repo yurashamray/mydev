@@ -1,11 +1,18 @@
+# Импортируем модули
 from flask import Flask, request, jsonify
 import requests
+import click
+import sys
 import os
 
 
 app = Flask(__name__)
+cli = sys.modules['flask.cli']
 
-# this is ping_sweep method which will send ping call
+#Баннер-приветствие Flask App сервера
+cli.show_server_banner = lambda *x: click.echo("Hello, Flask App Server is Online")
+
+# используем технику ping sweep, для сканирования диапазона IP-адресов
 def ping_sweep(network, count):
 
     active_hosts = {}
