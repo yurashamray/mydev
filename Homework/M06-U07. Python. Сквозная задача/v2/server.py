@@ -1,3 +1,9 @@
+"""
+Курс: MIFIIB
+Модуль.6.Python
+Сквозная задача
+Выполнил: Юрий Шамрай (yura.shamray@gmail.com)
+"""
 # Импортируем модули
 from flask import Flask, request, jsonify
 import requests
