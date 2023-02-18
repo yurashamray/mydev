@@ -1,3 +1,10 @@
+"""
+Курс: MIFIIB
+Модуль.6.Python
+Сквозная задача
+Выполнил: Юрий Шамрай (yura.shamray@gmail.com)
+"""
+# Импортируем модули
 import os
 import json
 import argparse
@@ -50,7 +57,7 @@ task = args["task"]
 ip = args["ip"]
 num_of_hosts = args["num_of_hosts"]
 # target will your url you will get from server.py
-target = str(input("Target:"))  # enter server ip and port like http://127.0.0.1:3010
+target = str(input("Target(enter server ip and port like http://127.0.0.1:3000) :"))  # enter server ip and port like http://127.0.0.1:3000
 method = str(input("Method (GET|POST):"))  # type of request
 
 if method == "POST":
