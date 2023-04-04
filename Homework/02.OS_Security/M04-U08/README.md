@@ -1,3 +1,3 @@
-![image](https://user-images.githubusercontent.com/55129997/229666813-c8a518fa-e883-4a30-bc7d-78d07e7dff50.png)
+![image](https://user-images.githubusercontent.com/55129997/229667344-d24f209a-1ec4-464d-9f57-48885f261ad0.png)
 * Модуль 3. Администрирование ОС Linux
 * Практика с проверкой ментором
