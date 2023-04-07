@@ -85,13 +85,13 @@ fi
 sleep 2
 echo -n "\n${cyan}${icon_wait} Checking ${icon_arrowr} Firewall and HTTP ${nocolor}"
 sleep 2
-sudo apt install ufw -y
 if sudo ufw status | grep -q inactive
 then
    echo -n "${red} ${icon_arrowr} ${icon_ko} Inactive"
 sleep 2
    echo "${cyan} ${icon_arrowr} ${icon_wait} Activating ${nocolor}"
 sleep 2
+sudo apt install ufw -y
 sudo ufw enable 
 else
    echo "${green} ${icon_arrowr} ${icon_ok} Active"
