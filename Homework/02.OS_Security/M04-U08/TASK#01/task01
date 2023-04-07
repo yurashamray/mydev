@@ -20,12 +20,12 @@ cyan='\033[1;36m'    # Cyan                                        #
 red='\033[1;31m'     # Red                                         #
 #------------------------------------------------------------------#
 # Icons                                                            #
-icon_ok=''                                                        #
-icon_ko=''                                                        #
-icon_stage=''                                                     #
-icon_wait=''                                                      #
-icon_light=''                                                     #
-icon_arrowr=''                                                    #
+icon_ok='▸'                                                        #
+icon_ko='⚠'                                                        #
+icon_stage='↯'                                                     #
+icon_wait='▹'                                                      #
+icon_light='☺'                                                     #
+icon_arrowr='→'                                                    #
 ####################################################################
 echo "\n${yellow}[${icon_light} INFO] Please enter your password if requested! ${nocolor}\n"
 sleep 2
@@ -52,7 +52,7 @@ fi
 # Update packages and Upgrade system
 echo "\n${purple}[${icon_stage} STAGE#02] - ${cyan}${icon_wait} Starting system update ${nocolor}"
 sleep 2
-sudo apt update && sudo apt -t jammy-backports upgrade -y && echo "${green}${icon_ok} System Updated Successfully!\n"
+sudo apt update && sudo apt upgrade -y && echo "${green}${icon_ok} System Updated Successfully!\n"
 ####################################################################
 ############################| STAGE#03 |############################
 # Install Apache2 & Requirements
@@ -85,6 +85,7 @@ fi
 sleep 2
 echo -n "\n${cyan}${icon_wait} Checking ${icon_arrowr} Firewall and HTTP ${nocolor}"
 sleep 2
+sudo apt install ufw -y
 if sudo ufw status | grep -q inactive
 then
    echo -n "${red} ${icon_arrowr} ${icon_ko} Inactive"
@@ -142,12 +143,12 @@ echo "${green} ${icon_arrowr} ${icon_ok} Done! ${nocolor}"
 sleep 2
 echo -n "${purple}[${icon_stage} STAGE#04] - ${cyan}${icon_wait} Checking Python ${nocolor}"
 sleep 2
-if ! python3 --version
+if [ ! -d /usr/bin/python3 ]
 then
-   echo -n "${red} ${icon_arrowr} ${icon_ko} Python is not installed";sleep 2; echo "${cyan}${icon_wait} Start Installation ${icon_arrowr} ${nocolor}"
+   echo -n "${red}${icon_ko} Python is not installed";sleep 2; echo "${cyan} ${icon_wait} Start Installation ${nocolor}"
 else
 sleep 2
-   echo "${green}${icon_ok} Python already installed! ${nocolor}"
+   echo -n "${green}${icon_ok} Python already installed! ${nocolor}";sleep 1; python3 --version
 fi
 
 
