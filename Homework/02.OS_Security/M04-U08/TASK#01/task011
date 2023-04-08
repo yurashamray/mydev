@@ -157,11 +157,9 @@ then
     echo -n "${red} ${icon_ko} Python not found!";sleep 2; echo "${cyan}${icon_wait} Installing Python ${nocolor}\n"
     sleep 2
     echo -n "${cyan}${icon_wait} Installing important packages ${nocolor}"
-    sudo apt install software-properties-common -y &>/dev/null && echo "${green}${icon_ok} Done! ${nocolor}\n"
+    sudo apt install software-properties-common -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
     echo -n "${cyan}${icon_wait} Installing repo for Python 3.10 ${nocolor}"
-    sudo add-apt-repository ppa:deadsnakes/ppa -y &>/dev/null && echo "${green}${icon_ok} Done! ${nocolor}\n"
-    echo "${cyan}${icon_wait} Installing Python 3.10 ${nocolor}"
-    sudo apt install -y python3.10 python3.10-distutils &>/dev/null
+    sudo add-apt-repository ppa:deadsnakes/ppa -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
     echo "n\${green}${icon_ok} Python Installed Successfully! ${nocolor}"
     sleep 2
     python3 --version 
