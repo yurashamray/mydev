@@ -71,7 +71,7 @@ then
     echo -n "${red}${icon_ko} Apache Server not found!";sleep 2; echo "${cyan} ${icon_wait} Installing Apache Server ${nocolor}"
     sleep 2
     sudo apt install apache2 apache2-doc apache2-utils -y
-    echo -n "${green}${icon_ok} Apache Server Installed Successfully! ${nocolor}\n"
+    echo -n "\n${green}${icon_ok} Apache Server Installed Successfully! ${nocolor}\n"
     sleep 2
     apache2 -v
     continue #Go to Check Apache Service
