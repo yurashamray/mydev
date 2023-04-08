@@ -20,12 +20,12 @@ cyan='\033[1;36m'    # Cyan                                        #
 red='\033[1;31m'     # Red                                         #
 #------------------------------------------------------------------#
 # Icons                                                            #
-icon_ok='▸'                                                        #
-icon_ko='⚠'                                                        #
-icon_stage='↯'                                                     #
-icon_wait='▹'                                                      #
-icon_light='☺'                                                     #
-icon_arrowr='→ '                                                   #
+icon_ok='▸'          # Ok, Successfully                            #
+icon_ko='⚠'          # Warning                                     #
+icon_stage='↯'       # Stage                                       #
+icon_wait='▹'        # Wait                                        #
+icon_light='☺'       # Info                                        #
+icon_arrowr='→ '     # Arrow                                       #
 ####################################################################
 echo "\n${yellow}[${icon_light} INFO] Please enter your password if requested! ${nocolor}\n"
 sleep 2
