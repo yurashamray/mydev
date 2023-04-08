@@ -115,7 +115,7 @@ echo "${green}${icon_ok} Done! ${nocolor}"
 # Changing ownership on the /var/www directory
 sleep 2
 echo -n "\n${cyan}${icon_wait} Changing ownership ${icon_arrowr} /var/www ${nocolor}"
-sudo chown -R $USER:$USER /var/www && sleep 2; echo "${green} ${icon_ok} Done!"
+sudo chown -R $USER:$USER /var/www && sleep 2; echo "${green}${icon_ok} Done!"
 #-------------------------------------------------------------------
 # Landing Page http://mifiib
 sleep 2
@@ -132,7 +132,7 @@ echo '<body>' >> index.html
 echo '<h1>Welcome to MIFIIB webpage! Have a great day!</h1>' >> index.html
 echo '</body>' >> index.html
 echo '</html>' >> index.html
-echo "${green} ${icon_ok} Done! ${icon_arrowr} http://mifiib"
+echo "${green}${icon_ok} Done! ${icon_arrowr} http://mifiib"
 #-------------------------------------------------------------------
 # Insert/update hosts entry
 sleep 2
@@ -143,7 +143,7 @@ cat /etc/hosts | tail -n +2 >> ./temp_hosts
 sudo sh -c 'cat ./temp_hosts > /etc/hosts'
 rm ./temp_hosts
 sleep 2
-echo "${green} ${icon_ok} Done! ${nocolor}"
+echo "${green}${icon_ok} Done! ${nocolor}"
 
 ####################################################################
 ############################| STAGE#04 |############################
@@ -161,9 +161,9 @@ echo "${cyan}${icon_wait} Installing important packages ${nocolor}"
 sudo apt install software-properties-common -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
 sleep 2
 echo "${cyan}${icon_wait} Installing repo for Python 3.10 ${nocolor}"
-sudo add-apt-repository ppa:deadsnakes/ppa -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
+sudo add-apt-repository ppa:deadsnakes/ppa -y && echo "${green}${icon_ok} Done! ${nocolor}"
 sleep 2
-echo "\n${green}${icon_ok} Python Installed Successfully! ${nocolor}"
+echo "${green}${icon_ok} Python Installed Successfully! ${nocolor}"
 sleep 2
 python3 --version 
 #else
