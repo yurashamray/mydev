@@ -64,7 +64,7 @@ sudo apt update && echo "${green}${icon_ok} Updated Successfully!\n"
 # Install Apache2 & Requirements
 # Check Apache
 sleep 2
-echo -n "${purple}[${icon_stage} STAGE#03] - ${cyan}${icon_wait} Checking ${icon_arrowr} Apache Server ${nocolor}\n"
+echo -n "${purple}[${icon_stage} STAGE#03] - ${cyan}${icon_wait} Checking Apache Server ${nocolor}\n"
 sleep 2
 if ! apache2 -v 2>/dev/null 
 then
@@ -161,7 +161,7 @@ echo "${cyan}${icon_wait} Installing important packages ${nocolor}"
 sudo apt install software-properties-common -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
 sleep 2
 echo "${cyan}${icon_wait} Installing repo for Python 3.10 ${nocolor}"
-sudo add-apt-repository ppa:deadsnakes/ppa -y && echo "${green}${icon_ok} Done! ${nocolor}"
+sudo add-apt-repository ppa:deadsnakes/ppa -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
 sleep 2
 echo "${green}${icon_ok} Python Installed Successfully! ${nocolor}"
 sleep 2
