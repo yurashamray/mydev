@@ -48,7 +48,7 @@ then
     continue # Go to STAGE#02
 # If not found, we display a message then add it to the source.list
 else
-    echo -n "${red}${icon_ko} Backports Repository not found!"; sleep 2; echo "${cyan} ${icon_wait} Adding ${icon_arrowr} /etc/apt/sources.list\n"
+    echo -n "${red}${icon_ko} Backports Repository not found!"; sleep 2; echo "${cyan} ${icon_wait} Adding ${icon_arrowr} /etc/apt/sources.list ${nocolor}\n"
     echo "deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse" | sudo sh -c 'cat >> /etc/apt/sources.list'
     sleep 2
     echo "${green}${icon_ok} Backports Repository has been added! ${nocolor}" && tail -n 1 /etc/apt/sources.list
@@ -152,21 +152,24 @@ sleep 2
 echo "\n${purple}[${icon_stage} STAGE#04] - ${cyan}${icon_wait} Checking Python ${nocolor}\n"
 sleep 2
 
-if ! python3 --version 2>/dev/null
-then
-    echo -n "${red} ${icon_ko} Python not found!";sleep 2; echo "${cyan}${icon_wait} Installing Python ${nocolor}\n"
-    sleep 2
-    echo -n "${cyan}${icon_wait} Installing important packages ${nocolor}"
-    sudo apt install software-properties-common -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
-    echo -n "${cyan}${icon_wait} Installing repo for Python 3.10 ${nocolor}"
-    sudo add-apt-repository ppa:deadsnakes/ppa -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
-    echo "n\${green}${icon_ok} Python Installed Successfully! ${nocolor}"
-    sleep 2
-    python3 --version 
-else
-    sleep 2
-    echo "${green}${icon_ok} Python already installed! ${nocolor}"
-fi
+#if ! python3 --version 2>/dev/null
+#then
+#   echo -n "${red} ${icon_ko} Python not found!"
+echo "${cyan}${icon_wait} Installing Python ${nocolor}\n"
+sleep 2
+echo -n "${cyan}${icon_wait} Installing important packages ${nocolor}"
+sudo apt install software-properties-common -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
+sleep 2
+echo -n "${cyan}${icon_wait} Installing repo for Python 3.10 ${nocolor}"
+sudo add-apt-repository ppa:deadsnakes/ppa -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
+sleep 2
+echo "\n${green}${icon_ok} Python Installed Successfully! ${nocolor}"
+sleep 2
+python3 --version 
+#else
+#    sleep 2
+#    echo "${green}${icon_ok} Python already installed! ${nocolor}"
+#fi
 
 ####################################################################
 ############################| STAGE#05 |############################
