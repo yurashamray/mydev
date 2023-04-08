@@ -96,7 +96,7 @@ echo -n "\n${cyan}${icon_wait} Checking UFW (Uncomplicated Firewall) ${nocolor}"
 sleep 2
 if sudo ufw status | grep -q inactive
 then
-    echo -n "${red} ${icon_ko} Inactive"
+    echo -n "${red}${icon_ko} Inactive"
     sleep 2
     echo "${cyan} ${icon_wait} Activating ${nocolor}"
     sleep 2
