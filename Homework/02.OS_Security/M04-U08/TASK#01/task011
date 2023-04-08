@@ -197,6 +197,10 @@ then
     echo "${green} ${icon_ok} Active (running) ${nocolor}"
 else
     echo "${red} ${icon_ko} Inactive (stopped) ${nocolor}"
+    sleep 2
+    echo "\n${cyan}${icon_wait} Starting SSH Service Status ${nocolor}"
+    sleep 2
+    sudo systemctl start ssh 1>/dev/null && echo "${green}${icon_ok} Done! ${nocolor}"
 fi
 #-------------------------------------------------------------------
 # Add firewall rules
