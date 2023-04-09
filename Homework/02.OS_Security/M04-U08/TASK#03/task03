@@ -1,0 +1,12 @@
+#!bin/bash
+####################################################################
+############################| TASK#03 |#############################
+#                           DESCRIPTION:                           
+#     Set up automatic mailing of logs of services: SSH, FTP, RDP.
+#         Use the Logwatch utility and the cron job scheduler.
+#             The letter should be sent every day at 8:00.
+#                 The level of detail is up to you.       
+#-------------------------------------------------------------------
+#               Written by Yuriy Shamray (aka Prospero)            
+#                           MIFIIB - 2023                          
+####################################################################
