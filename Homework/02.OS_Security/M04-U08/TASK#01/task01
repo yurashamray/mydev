@@ -89,29 +89,7 @@ else
     echo "${red} ${icon_ko} Inactive (stopped) ${nocolor}"
 fi
 #-------------------------------------------------------------------
-# Enabling UFW firewall and add rules for Apache
-sleep 2
-echo -n "\n${cyan}${icon_wait} Checking UFW (Uncomplicated Firewall) ${nocolor}"
-sleep 2
-if sudo ufw status | grep -q inactive
-then
-    echo -n "${red}${icon_ko} Inactive"
-    sleep 2
-    echo "${cyan} ${icon_wait} Activating ${nocolor}"
-    sleep 2
-    sudo ufw enable 
-else
-    echo "${green}${icon_ok} Active (running) ${nocolor}"
-fi
-#-------------------------------------------------------------------
-# add UFW rules for Apache
-sleep 2
-echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
-sleep 2
-sudo ufw allow from any to any port 80,443 proto tcp comment 'Open port http/https tcp ports 80,443'
-sleep 2
-sudo ufw status numbered
-echo "${green}${icon_ok} Done! ${nocolor}"
+
 #-------------------------------------------------------------------
 # Changing ownership on the /var/www directory
 sleep 2
@@ -214,15 +192,6 @@ else
     sleep 2
     sudo systemctl start ssh && echo "${green}${icon_ok} Done! ${nocolor}"
 fi
-#-------------------------------------------------------------------
-# add UFW rules for SSH
-sleep 2
-echo "\n${cyan}${icon_wait} Adding Rules to UFW ${icon_arrowr} 'SSH' ${nocolor}"
-sleep 2
-sudo ufw allow 2222/tcp comment 'Open port ssh tcp port 2222'
-sleep 2
-sudo ufw status numbered
-echo "${green}${icon_ok} Done! ${nocolor}"
 
 ####################################################################
 ############################| STAGE#06 |############################
@@ -240,9 +209,8 @@ then
     sudo sed -i -e 's/#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf 
     sudo sed -i -e 's/#local_umask=022/local_umask=022/' /etc/vsftpd.conf
     sudo sed -i -e 's/#xferlog_std_format=YES/xferlog_std_format=YES/' /etc/vsftpd.conf
-    #sudo sed -i -e 's/#chroot_local_user=YES/chroot_local_user=YES/' /etc/vsftpd.conf
+    sudo sed -i -e 's/#chroot_local_user=YES/chroot_local_user=YES/' /etc/vsftpd.conf
     sudo sed -i -e 's/ssl_enable=NO/ssl_enable=YES/' /etc/vsftpd.conf
-    #sudo sed -i '/chroot_local_user=YES/a allow_writeable_chroot=YES' /etc/vsftpd.conf
     sudo sed -i '/ssl_enable=YES/a ssl_tlsv1=YES' /etc/vsftpd.conf
     sudo sed -i '/ssl_tlsv1=YES/a ssl_sslv2=NO' /etc/vsftpd.conf
     sudo sed -i '/ssl_sslv2=NO/a ssl_sslv3=NO' /etc/vsftpd.conf
@@ -250,7 +218,6 @@ then
     sudo sed -i '/allow_anon_ssl=NO/a force_local_data_ssl=YES' /etc/vsftpd.conf
     sudo sed -i '/force_local_data_ssl=YES/a force_local_logins_ssl=YES' /etc/vsftpd.conf
     sudo sed -i '/force_local_logins_ssl=YES/a ssl_ciphers=HIGH' /etc/vsftpd.conf
-    #sudo sed -i '/ssl_ciphers=HIGH/a use_localtime=YES' /etc/vsftpd.conf
     sudo sed -i '/ssl_sslv3=NO/a user_sub_token=$USER' /etc/vsftpd.conf
     sudo sed -i '/user_sub_token=$USER/a local_root=/home/$USER/ftp' /etc/vsftpd.conf
     sudo sed -i '/ssl_ciphers=HIGH/a pasv_min_port=10000' /etc/vsftpd.conf
@@ -258,6 +225,7 @@ then
     sudo sed -i '/pasv_max_port=10100/a userlist_enable=YES' /etc/vsftpd.conf
     sudo sed -i '/userlist_enable=YES/a userlist_file=/etc/vsftpd.userlist' /etc/vsftpd.conf
     sudo sed -i '/userlist_enable=YES/a userlist_deny=NO' /etc/vsftpd.conf
+    sudo sed -i '/userlist_deny=NO/a allow_writeable_chroot=YES' /etc/vsftpd.conf
     sudo service vsftpd restart
 else
     vsftpd -version
@@ -278,10 +246,34 @@ else
     sleep 2
     sudo systemctl start vsftpd && echo "${green}${icon_ok} Done! ${nocolor}"
 fi
-#-------------------------------------------------------------------
-# add UFW rules for VSFTP
+
+####################################################################
+############################| STAGE#07 |############################
+# Enabling UFW firewall and add rules for Apache, SSH, FTP
 sleep 2
-echo "\n${cyan}${icon_wait} Adding Rules to UFW ${icon_arrowr} VSFTPD ${nocolor}"
+echo -n "\n${purple}[${icon_stage} STAGE#07] - ${cyan}${icon_wait} Checking UFW (Uncomplicated Firewall) ${nocolor}"
+sleep 2
+if sudo ufw status | grep -q inactive
+then
+    echo -n "${red}${icon_ko} Inactive"
+    sleep 2
+    echo "${cyan} ${icon_wait} Activating ${nocolor}"
+    sleep 2
+    sudo ufw enable 
+else
+    echo "${green}${icon_ok} Active (running) ${nocolor}"
+fi
+#-------------------------------------------------------------------
+sleep 2
+echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
+sleep 2
+sudo ufw allow from any to any port 80,443 proto tcp comment 'Open port http/https tcp ports 80,443'
+sleep 2
+echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'SSH' ${nocolor}"
+sleep 2
+sudo ufw allow 2222/tcp comment 'Open port ssh tcp port 2222'
+sleep 2
+echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'FTP' ${nocolor}"
 sleep 2
 sudo ufw allow from any to any port 20,21,10000:10100 proto tcp comment 'Open ports for FTP'
 sleep 2
