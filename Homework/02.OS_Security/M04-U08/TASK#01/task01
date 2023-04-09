@@ -40,24 +40,28 @@ echo "\n${purple}[${icon_stage} STAGE#01] - ${cyan}${icon_wait} Checking ${icon_
 sleep 2
 
 if grep -R "jammy-backports" /etc/apt/sources.list
-# If found, we display a message and skip STAGE#01
 then
     echo -n "${green}${icon_ok} Backports Repository already exists!\n"
     sleep 2
-    continue # Go to STAGE#02
-# If not found, we display a message then add it to the source.list
 else
     echo -n "${red}${icon_ko} Backports Repository not found!"; sleep 2; echo "${cyan} ${icon_wait} Adding ${icon_arrowr} /etc/apt/sources.list ${nocolor}\n"
     echo "deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse" | sudo sh -c 'cat >> /etc/apt/sources.list'
     sleep 2
     echo "${green}${icon_ok} Backports Repository has been added! ${nocolor}" && tail -n 1 /etc/apt/sources.list
 fi
+
 ####################################################################
 ############################| STAGE#02 |############################
 # Update packages
 echo "\n${purple}[${icon_stage} STAGE#02] - ${cyan}${icon_wait} Starting update packages ${nocolor}"
 sleep 2
-sudo apt update && echo "${green}${icon_ok} Updated Successfully!\n"
+sudo apt update
+#-------------------------------------------------------------------
+# Uncomment if you wish to upgrade system
+# sudo apt upgrade -y 
+#-------------------------------------------------------------------
+echo "${green}${icon_ok} Updated Successfully!\n"
+
 ####################################################################
 ############################| STAGE#03 |############################
 # Install Apache2 & Requirements
@@ -73,7 +77,6 @@ then
     echo -n "\n${green}${icon_ok} Apache Server Installed Successfully! ${nocolor}\n"
     sleep 2
     apache2 -v
-    continue #Go to Check Apache Service
 else
     echo "${green}${icon_ok} Apache Server already installed!"
 fi
@@ -88,8 +91,6 @@ then
 else
     echo "${red} ${icon_ko} Inactive (stopped) ${nocolor}"
 fi
-#-------------------------------------------------------------------
-
 #-------------------------------------------------------------------
 # Changing ownership on the /var/www directory
 sleep 2
@@ -130,12 +131,13 @@ echo "${green}${icon_ok} Done! ${nocolor}"
 sleep 2
 echo "\n${purple}[${icon_stage} STAGE#04] - ${cyan}${icon_wait} Checking Python ${nocolor}\n"
 sleep 2
+#-------------------------------------------------------------------
 # Uncomment the lines below if Python is not installed
 # because it was tested on a system with Python pre-installed.
-
 #if ! python3 --version 2>/dev/null
 #then
 #   echo -n "${red} ${icon_ko} Python not found!"
+#-------------------------------------------------------------------
 echo "${cyan}${icon_wait} Installing Python ${nocolor}\n"
 sleep 2
 echo "${cyan}${icon_wait} Installing important packages ${nocolor}"
@@ -147,6 +149,7 @@ sleep 2
 echo "${green}${icon_ok} Python Installed Successfully! ${nocolor}"
 sleep 2
 python3 --version 
+#-------------------------------------------------------------------
 #else
 #    sleep 2
 #    echo "${green}${icon_ok} Python already installed! ${nocolor}"
@@ -172,7 +175,6 @@ then
     sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no\n#PasswordAuthentication yes/g' /etc/ssh/sshd_config
     sudo systemctl start ssh
     echo -n "\n${green}${icon_ok} OpenSSH Server Installed Successfully! ${nocolor}";sleep 2; ssh -V
-    continue  #Got to checking SSH Service Status
 else
     ssh -V
     echo "${green}${icon_ok} SSH Server already installed! ${nocolor}"
@@ -204,6 +206,7 @@ then
     echo -n "${red}${icon_ko} VSFTPD not found!";sleep 2; echo "${cyan} ${icon_wait} Installing VSFTPD ${nocolor}"
     sleep 2
     sudo apt install vsftpd -y
+# Backup /etc/vsftpd.conf
     sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.backup
 # Change /etc/vsftpd.conf
     sudo sed -i -e 's/#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf 
@@ -264,6 +267,7 @@ else
     echo "${green}${icon_ok} Active (running) ${nocolor}"
 fi
 #-------------------------------------------------------------------
+# Add rules for Apache, SSH, FTP
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
 sleep 2
