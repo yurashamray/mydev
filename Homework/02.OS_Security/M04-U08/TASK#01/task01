@@ -236,13 +236,12 @@ then
     sleep 2
     sudo apt install vsftpd -y
     sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.backup
-# Change /etc/vsftpd.conf 
+# Change /etc/vsftpd.conf
     sudo sed -i -e 's/#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf 
     sudo sed -i -e 's/#local_umask=022/local_umask=022/' /etc/vsftpd.conf
     sudo sed -i -e 's/#xferlog_std_format=YES/xferlog_std_format=YES/' /etc/vsftpd.conf
     sudo sed -i -e 's/#chroot_local_user=YES/chroot_local_user=YES/' /etc/vsftpd.conf
     sudo sed -i -e 's/ssl_enable=NO/ssl_enable=YES/' /etc/vsftpd.conf
-    sudo sed -i -e 's/rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem/rsa_cert_file=/etc/ssl/private/ssl-cert-snakeoil.pem/' /etc/vsftpd.conf
     sudo sed -i '/chroot_local_user=YES/a allow_writeable_chroot=YES' /etc/vsftpd.conf
     sudo sed -i '/ssl_enable=YES/a ssl_tlsv1=YES' /etc/vsftpd.conf
     sudo sed -i '/ssl_tlsv1=YES/a ssl_sslv2=NO' /etc/vsftpd.conf
