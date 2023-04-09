@@ -237,7 +237,6 @@ then
     sleep 2
     sudo apt install vsftpd -y
     sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.backup
-    sudo nano /etc/vsftpd.conf
     sudo sed -i -e 's/#write_enable=YES/write_enable=YES\n#write_enable=YES/g' /etc/vsftpd.conf 
     sudo sed -i -e 's/#local_umask=022/local_umask=022\n#local_umask=022/g' /etc/vsftpd.conf
     sudo sed -i -e 's/#xferlog_std_format=YES/xferlog_std_format=YES\n#xferlog_std_format=YES/g' /etc/vsftpd.conf
