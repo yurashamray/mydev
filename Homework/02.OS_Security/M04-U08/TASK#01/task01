@@ -267,7 +267,7 @@ fi
 #--------------------------------------------------------------------
 #Check VSFTPD service
 sleep 2
-echo -n "\n${cyan}${icon_wait} Checking SSH Service Status ${nocolor}"
+echo -n "\n${cyan}${icon_wait} Checking VSFTPD Service Status ${nocolor}"
 if systemctl is-active -q vsftpd
 then
     sleep 2
