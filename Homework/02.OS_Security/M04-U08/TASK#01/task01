@@ -1,30 +1,30 @@
 #!bin/bash
 ####################################################################
 ############################| TASK#01 |#############################
-#                           DESCRIPTION:                           
-#        Add Backports Repository (for Ubuntu based systems)       
-#                   Install Apache2, Python, SSH                   
+#                           DESCRIPTION
+#        Add Backports Repository (for Ubuntu based systems)
+#                   Install Apache2, Python, SSH
 #-------------------------------------------------------------------
-#               Written by Yuriy Shamray (aka Prospero)            
-#                           MIFIIB - 2023                          
+#               Written by Yuriy Shamray (aka Prospero)
+#                           MIFIIB - 2023
 #
 ####################################################################
 #############################| COLORS |#############################
-# Regular Colors                                                   
-nocolor='\033[0m'    # Text Reset                                  
-yellow='\033[1;33m'  # Yellow                                      
-purple='\033[1;35m'  # Purple                                      
-green='\033[1;32m'   # Green                                       
-cyan='\033[1;36m'    # Cyan                                        
-red='\033[1;31m'     # Red                                         
+# Regular Colors
+nocolor='\033[0m'    # Text Reset
+yellow='\033[1;33m'  # Yellow
+purple='\033[1;35m'  # Purple
+green='\033[1;32m'   # Green
+cyan='\033[1;36m'    # Cyan
+red='\033[1;31m'     # Red
 #------------------------------------------------------------------
-# Icons                                                            
-icon_ok='▸'          # Ok, Successfully                            
-icon_ko='⚠'          # Warning                                    
-icon_stage='↯'       # Stage                                       
-icon_wait='▹'        # Wait                                       
-icon_light='☺'       # Info                                        
-icon_arrowr='→'      # Arrow                                       
+# Icons
+icon_ok='▸'          # Ok, Successfully
+icon_ko='⚠'          # Warning
+icon_stage='↯'       # Stage
+icon_wait='▹'        # Wait
+icon_light='☺'       # Info
+icon_arrowr='→'      # Arrow
 ####################################################################
 # Distro Info
 echo "\n${cyan}${icon_wait} Linux Distro Information ${nocolor}"
@@ -108,7 +108,8 @@ fi
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
 sleep 2
-sudo ufw allow "Apache"
+sudo ufw allow http
+sudo ufw allow https
 sleep 2
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"
@@ -219,7 +220,7 @@ fi
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules to UFW ${icon_arrowr} 'SSH' ${nocolor}"
 sleep 2
-sudo ufw allow ssh
+sudo ufw allow 2222
 sleep 2
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"

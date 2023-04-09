@@ -1,73 +1,81 @@
 #!bin/bash
 ####################################################################
 ############################| TASK#01 |#############################
-#                           DESCRIPTION:                           #
-#        Add Backports Repository (for Ubuntu based systems)       #
-#                   Install Apache2, Python, SSH                   #
-#------------------------------------------------------------------#
-#               Written by Yuriy Shamray (aka Prospero)            #
-#                           MIFIIB - 2023                          #
-####################################################################
-
+#                           DESCRIPTION:                           
+#        Add Backports Repository (for Ubuntu based systems)       
+#                   Install Apache2, Python, SSH                   
+#-------------------------------------------------------------------
+#               Written by Yuriy Shamray (aka Prospero)            
+#                           MIFIIB - 2023                          
+#
 ####################################################################
 #############################| COLORS |#############################
-# Regular Colors                                                   #
-nocolor='\033[0m'    # Text Reset                                  #
-yellow='\033[1;33m'  # Yellow                                      #
-purple='\033[1;35m'  # Purple                                      #
-green='\033[1;32m'   # Green                                       #
-cyan='\033[1;36m'    # Cyan                                        #
-red='\033[1;31m'     # Red                                         #
-#------------------------------------------------------------------#
-# Icons                                                            #
-icon_ok='▸'                                                        #
-icon_ko='⚠'                                                        #
-icon_stage='↯'                                                     #
-icon_wait='▹'                                                      #
-icon_light='☺'                                                     #
-icon_arrowr='→'                                                    #
+# Regular Colors                                                   
+nocolor='\033[0m'    # Text Reset                                  
+yellow='\033[1;33m'  # Yellow                                      
+purple='\033[1;35m'  # Purple                                      
+green='\033[1;32m'   # Green                                       
+cyan='\033[1;36m'    # Cyan                                        
+red='\033[1;31m'     # Red                                         
+#------------------------------------------------------------------
+# Icons                                                            
+icon_ok='▸'          # Ok, Successfully                            
+icon_ko='⚠'          # Warning                                    
+icon_stage='↯'       # Stage                                       
+icon_wait='▹'        # Wait                                       
+icon_light='☺'       # Info                                        
+icon_arrowr='→'      # Arrow                                       
 ####################################################################
-echo "\n${yellow}[${icon_light} INFO] Please enter your password if requested! ${nocolor}\n"
+# Distro Info
+echo "\n${cyan}${icon_wait} Linux Distro Information ${nocolor}"
 sleep 2
+lsb_release -a
+sleep 3
+# sudo password reminder
+echo "\n${yellow}[${icon_light} INFO] Please enter your password if requested! ${nocolor}"
 ############################| STAGE#01 |############################
 # Checking if the Backports repo is in the source.list
-echo "${purple}[${icon_stage} STAGE#01] - ${cyan}${icon_wait} Checking ${icon_arrowr} /etc/apt/sources.list ${nocolor}\n"
+sleep 2
+echo "\n${purple}[${icon_stage} STAGE#01] - ${cyan}${icon_wait} Checking ${icon_arrowr} /etc/apt/sources.list ${nocolor}\n"
 sleep 2
 
 if grep -R "jammy-backports" /etc/apt/sources.list
 # If found, we display a message and skip STAGE#01
 then
     echo -n "${green}${icon_ok} Backports Repository already exists!\n"
-sleep 2
-continue # Go to STAGE#02
+    sleep 2
+    continue # Go to STAGE#02
 # If not found, we display a message then add it to the source.list
 else
-    echo -n "${red}${icon_ko} Backports Repository not found!"; sleep 2; echo "${cyan} ${icon_wait} Adding ${icon_arrowr} /etc/apt/sources.list\n"
+    echo -n "${red}${icon_ko} Backports Repository not found!"; sleep 2; echo "${cyan} ${icon_wait} Adding ${icon_arrowr} /etc/apt/sources.list ${nocolor}\n"
     echo "deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse" | sudo sh -c 'cat >> /etc/apt/sources.list'
     sleep 2
     echo "${green}${icon_ok} Backports Repository has been added! ${nocolor}" && tail -n 1 /etc/apt/sources.list
 fi
 ####################################################################
 ############################| STAGE#02 |############################
-# Update packages and Upgrade system
-echo "\n${purple}[${icon_stage} STAGE#02] - ${cyan}${icon_wait} Starting system update ${nocolor}"
+# Update packages
+echo "\n${purple}[${icon_stage} STAGE#02] - ${cyan}${icon_wait} Starting update packages ${nocolor}"
 sleep 2
-sudo apt update && sudo apt upgrade -y && echo "${green}${icon_ok} System Updated Successfully!\n"
+sudo apt update && echo "${green}${icon_ok} Updated Successfully!\n"
 ####################################################################
 ############################| STAGE#03 |############################
 # Install Apache2 & Requirements
 # Check Apache
 sleep 2
-echo -n "${purple}[${icon_stage} STAGE#03] - ${cyan}${icon_wait} Checking ${icon_arrowr} Apache Server"
+echo -n "${purple}[${icon_stage} STAGE#03] - ${cyan}${icon_wait} Checking Apache Server ${nocolor}\n"
 sleep 2
-if [ ! -d /etc/apache2 ]
+if ! apache2 -v 2>/dev/null 
 then
-    echo -n "${red} ${icon_arrowr} ${icon_ko} Apache Server is not installed!";sleep 2; echo "${cyan} ${icon_arrowr} ${icon_wait} Installing Apache2 & Requirements ${nocolor}"
-sleep 2
-sudo apt install apache2 apache2-doc apache2-utils -y
-continue #Go to Check Apache Service
+    echo -n "${red}${icon_ko} Apache Server not found!";sleep 2; echo "${cyan} ${icon_wait} Installing Apache Server ${nocolor}"
+    sleep 2
+    sudo apt install apache2 apache2-doc apache2-utils -y
+    echo -n "\n${green}${icon_ok} Apache Server Installed Successfully! ${nocolor}\n"
+    sleep 2
+    apache2 -v
+    continue #Go to Check Apache Service
 else
-   echo "${green} ${icon_arrowr} ${icon_ok} Apache Server already installed!"
+    echo "${green}${icon_ok} Apache Server already installed!"
 fi
 #-------------------------------------------------------------------
 # Check Apache service
@@ -76,28 +84,29 @@ echo -n "\n${cyan}${icon_wait} Checking Apache Service Status"
 sleep 2
 if systemctl is-active -q apache2
 then
-    echo "${green} ${icon_arrowr} ${icon_ok} Active (running) ${nocolor}"
+    echo "${green} ${icon_ok} Active (running) ${nocolor}"
 else
-    echo "${red} ${icon_arrowr} ${icon_ko} Inactive (stopped) ${nocolor}"
+    echo "${red} ${icon_ko} Inactive (stopped) ${nocolor}"
 fi
 #-------------------------------------------------------------------
-# Enabling firewall and HTTP
+# Enabling UFW firewall and add rules for Apache
 sleep 2
-echo -n "\n${cyan}${icon_wait} Checking ${icon_arrowr} Firewall and HTTP ${nocolor}"
+echo -n "\n${cyan}${icon_wait} Checking UFW (Uncomplicated Firewall) ${nocolor}"
 sleep 2
 if sudo ufw status | grep -q inactive
 then
-   echo -n "${red} ${icon_arrowr} ${icon_ko} Inactive"
-sleep 2
-   echo "${cyan} ${icon_arrowr} ${icon_wait} Activating ${nocolor}"
-sleep 2
-sudo apt install ufw -y
-sudo ufw enable 
+    echo -n "${red}${icon_ko} Inactive"
+    sleep 2
+    echo "${cyan} ${icon_wait} Activating ${nocolor}"
+    sleep 2
+    sudo ufw enable 
 else
-   echo "${green} ${icon_arrowr} ${icon_ok} Active"
+    echo "${green}${icon_ok} Active (running) ${nocolor}"
 fi
+#-------------------------------------------------------------------
+# add UFW rules for Apache
 sleep 2
-echo "${cyan}${icon_wait} Adding Rules ${icon_arrowr} Apache Server ${nocolor}"
+echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
 sleep 2
 sudo ufw allow "Apache"
 sleep 2
@@ -107,11 +116,11 @@ echo "${green}${icon_ok} Done! ${nocolor}"
 # Changing ownership on the /var/www directory
 sleep 2
 echo -n "\n${cyan}${icon_wait} Changing ownership ${icon_arrowr} /var/www ${nocolor}"
-sudo chown -R $USER:$USER /var/www && sleep 2; echo "${green} ${icon_arrowr} ${icon_ok} Done!"
+sudo chown -R $USER:$USER /var/www && sleep 2; echo "${green}${icon_ok} Done!"
 #-------------------------------------------------------------------
 # Landing Page http://mifiib
 sleep 2
-echo -n "${cyan}${icon_wait} Creating the landing page ${icon_arrowr} /var/www/html/index.html ${nocolor}"
+echo -n "\n${cyan}${icon_wait} Creating a landing page ${icon_arrowr} /var/www/html/index.html ${nocolor}"
 sleep 2
 cd /var/www/html/
 echo '<!DOCTYPE html>' > index.html
@@ -124,40 +133,101 @@ echo '<body>' >> index.html
 echo '<h1>Welcome to MIFIIB webpage! Have a great day!</h1>' >> index.html
 echo '</body>' >> index.html
 echo '</html>' >> index.html
-echo "${green} ${icon_arrowr} ${icon_ok} Done! ${icon_arrowr} http://mifiib"
+echo "${green}${icon_ok} Done! ${icon_arrowr} http://mifiib"
 #-------------------------------------------------------------------
 # Insert/update hosts entry
 sleep 2
-echo -n "${cyan}${icon_wait} Update ${icon_arrowr} /etc/hosts ${nocolor}"
+echo -n "\n${cyan}${icon_wait} Inserting a new entry ${icon_arrowr} /etc/hosts ${nocolor}"
 echo "127.0.0.1       localhost" > ./temp_hosts
 echo "127.0.0.1       mifiib" >> ./temp_hosts
 cat /etc/hosts | tail -n +2 >> ./temp_hosts
 sudo sh -c 'cat ./temp_hosts > /etc/hosts'
 rm ./temp_hosts
 sleep 2
-echo "${green} ${icon_arrowr} ${icon_ok} Done! ${nocolor}"
+echo "${green}${icon_ok} Done! ${nocolor}"
 
 ####################################################################
 ############################| STAGE#04 |############################
 # Install Python
 sleep 2
-echo -n "${purple}[${icon_stage} STAGE#04] - ${cyan}${icon_wait} Checking Python ${nocolor}"
+echo "\n${purple}[${icon_stage} STAGE#04] - ${cyan}${icon_wait} Checking Python ${nocolor}\n"
 sleep 2
-if [ ! -d /usr/bin/python3 ]
+# Uncomment the lines below if Python is not installed
+# because it was tested on a system with Python pre-installed.
+
+#if ! python3 --version 2>/dev/null
+#then
+#   echo -n "${red} ${icon_ko} Python not found!"
+echo "${cyan}${icon_wait} Installing Python ${nocolor}\n"
+sleep 2
+echo "${cyan}${icon_wait} Installing important packages ${nocolor}"
+sudo apt install software-properties-common -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
+sleep 2
+echo "${cyan}${icon_wait} Installing repo for Python 3.10 ${nocolor}"
+sudo add-apt-repository ppa:deadsnakes/ppa -y && echo "${green}${icon_ok} Done! ${nocolor}\n"
+sleep 2
+echo "${green}${icon_ok} Python Installed Successfully! ${nocolor}"
+sleep 2
+python3 --version 
+#else
+#    sleep 2
+#    echo "${green}${icon_ok} Python already installed! ${nocolor}"
+#fi
+
+####################################################################
+############################| STAGE#05 |############################
+# Install & Setup SSH
+sleep 2
+echo "\n${purple}[${icon_stage} STAGE#05] - ${cyan}${icon_wait} Checking SSH Server ${nocolor}\n"
+sleep 2
+
+if ! ssh -V 2>/dev/null
 then
-   echo -n "${red}${icon_ko} Python is not installed";sleep 2; echo "${cyan} ${icon_wait} Start Installation ${nocolor}"
+    echo -n "${red}${icon_ko} SSH Server not found!";sleep 2; echo "${cyan} ${icon_wait} Installing OpenSSH ${nocolor}"
+    sleep 2
+    sudo apt install openssh-server -y
+    sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
+    sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
+    # Change SSH port from 22 to 2222
+    sudo sed -i -e 's/#Port 22/Port 2222\n#Port 22/g' /etc/ssh/sshd_config
+    # Disable SSH password login
+    sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no\n#PasswordAuthentication yes/g' /etc/ssh/sshd_config
+    sudo systemctl start ssh 1>/dev/null
+    echo -n "\n${green}${icon_ok} OpenSSH Server Installed Successfully! ${nocolor}";sleep 2; ssh -V
+    continue  #Got to checking SSH Service Status
 else
-sleep 2
-   echo -n "${green}${icon_ok} Python already installed! ${nocolor}";sleep 1; python3 --version
+    ssh -V
+    echo "${green}${icon_ok} SSH Server already installed! ${nocolor}"
 fi
-
-
+#--------------------------------------------------------------------
+#Check SSH service
+sleep 2
+echo -n "\n${cyan}${icon_wait} Checking SSH Service Status ${nocolor}"
+if systemctl is-active -q ssh
+then
+    sleep 2
+    echo "${green} ${icon_ok} Active (running) ${nocolor}"
+else
+    echo "${red} ${icon_ko} Inactive (stopped) ${nocolor}"
+    sleep 2
+    echo "\n${cyan}${icon_wait} Starting SSH Service Status ${nocolor}"
+    sleep 2
+    sudo systemctl start ssh 1>/dev/null && echo "${green}${icon_ok} Done! ${nocolor}"
+fi
+#-------------------------------------------------------------------
+# add UFW rules for SSH
+sleep 2
+echo "\n${cyan}${icon_wait} Adding Rules to UFW ${icon_arrowr} 'SSH' ${nocolor}"
+sleep 2
+sudo ufw allow ssh
+sleep 2
+sudo ufw status numbered
+echo "${green}${icon_ok} Done! ${nocolor}"
 
 ####################################################################
 ##########################| FINAL STAGE |###########################
 # Autoclean Apt Cache
 sleep 2
-echo "\n${purple}[${icon_stage} STAGE#06] - ${cyan}${icon_wait} Autoclean Apt Cache ${nocolor}"
+echo "\n${purple}[${icon_stage} FINALE STAGE] - ${cyan}${icon_wait} Autoclean Apt Cache ${nocolor}"
 sleep 2
-sudo apt autoclean && echo "${green}${icon_ok} All Done!\n"
-
+sudo apt autoclean && echo "\n${green}${icon_ok} ALL DONE!\n"
