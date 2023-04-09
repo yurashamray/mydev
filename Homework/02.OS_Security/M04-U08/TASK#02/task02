@@ -10,3 +10,35 @@
 #               Written by Yuriy Shamray (aka Prospero)            
 #                           MIFIIB - 2023                          
 ####################################################################
+
+# Source directories variables
+src_home="/home/"
+src_ssh="/etc/ssh/ssh_config"
+src_rdp=''
+src_ftp="/etc/vsftpd.conf"
+src_log="/var/log/"
+
+# Destination
+dest_dir='/archive/'
+
+# File name
+filename=backup-$(date +%d-m%-Y%).tar.gz
+
+# Tape Archive tool
+tar zcvpf $dest_dir$filename $src_home $src_ssh $src_rdp $src_ftp $src_log
+
+
+# Backup SSH Config File
+# tar cpzf $dest_dir$filename $src_ssh
+
+# Backup RDP Config File
+# tar cpzf $dest_dir$filename $src_rdp
+
+# Backup FTP Config file
+# tar cpzf $dest_dir$filename $src_ftp
+
+# Backup /var/log dir
+# tar cpzf $dest_dir$filename $src_log
+
+# To delete files older than 15 days
+find $dest_dir/* -mtime +15 -exec rm {} \;
