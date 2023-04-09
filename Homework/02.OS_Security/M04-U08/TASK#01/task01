@@ -188,13 +188,12 @@ then
     sudo apt install openssh-server -y
     sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
     sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
+    # Change SSH port from 22 to 2222
+    sudo sed -i -e 's/#Port 22/Port 2222\n#Port 22/g' /etc/ssh/sshd_config
+    # Disable SSH password login
+    sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no\n#PasswordAuthentication yes/g' /etc/ssh/sshd_config
     sudo systemctl start ssh 1>/dev/null
     echo -n "\n${green}${icon_ok} OpenSSH Server Installed Successfully! ${nocolor}";sleep 2; ssh -V
-# Change SSH port from 22 to 2222
-    sudo sed -i -e 's/#Port 22/Port 2222\n#Port 22/g' /etc/ssh/sshd_config
-# Disable SSH password login
-    sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no\n#PasswordAuthentication yes/g' /etc/ssh/sshd_config
-    sudo service sshd restart
     continue  #Got to checking SSH Service Status
 else
     ssh -V
