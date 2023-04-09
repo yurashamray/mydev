@@ -201,7 +201,7 @@ else
     echo "${green}${icon_ok} SSH Server already installed! ${nocolor}"
 fi
 #--------------------------------------------------------------------
-#Check SSH service
+# Check SSH service
 sleep 2
 echo -n "\n${cyan}${icon_wait} Checking SSH Service Status ${nocolor}"
 if systemctl is-active -q ssh
