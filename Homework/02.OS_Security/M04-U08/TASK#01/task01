@@ -19,12 +19,12 @@ cyan='\033[1;36m'    # Cyan
 red='\033[1;31m'     # Red
 #------------------------------------------------------------------
 # Icons
-icon_ok='▸'          # Ok, Successfully
-icon_ko='⚠'          # Warning
-icon_stage='↯'       # Stage
-icon_wait='▹'        # Wait
-icon_light='☺'       # Info
-icon_arrowr='→'      # Arrow
+icon_ok='▸'
+icon_ko='⚠'
+icon_stage='↯'
+icon_wait='▹'
+icon_light='☺'
+icon_arrowr='→'
 ####################################################################
 # Distro Info
 echo "\n${cyan}${icon_wait} Linux Distro Information ${nocolor}"
@@ -108,8 +108,7 @@ fi
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
 sleep 2
-sudo ufw allow http
-sudo ufw allow https
+sudo ufw allow from any to any port 80,443 proto tcp comment 'Open port http/https tcp ports 80,443'
 sleep 2
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"
@@ -220,7 +219,7 @@ fi
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules to UFW ${icon_arrowr} 'SSH' ${nocolor}"
 sleep 2
-sudo ufw allow 2222
+sudo ufw allow from any to any port 2222/tcp comment 'Open port ssh tcp port 2222'
 sleep 2
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"
