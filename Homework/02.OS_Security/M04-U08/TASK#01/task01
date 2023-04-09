@@ -253,11 +253,11 @@ then
     sudo sed -i '/ssl_ciphers=HIGH/a use_localtime=YES' /etc/vsftpd.conf
     sudo sed -i '/ssl_sslv3=NO/a user_sub_token=$USER' /etc/vsftpd.conf
     sudo sed -i '/user_sub_token=$USER/a local_root=/home/$USER/ftp' /etc/vsftpd.conf
-    sudo sed -i '/local_root=/home/$USER/ftp/a pasv_min_port=10000' /etc/vsftpd.conf
+    sudo sed -i '/ssl_ciphers=HIGH/a pasv_min_port=10000' /etc/vsftpd.conf
     sudo sed -i '/pasv_min_port=10000/a pasv_max_port=10100' /etc/vsftpd.conf
     sudo sed -i '/pasv_max_port=10100/a userlist_enable=YES' /etc/vsftpd.conf
     sudo sed -i '/userlist_enable=YES/a userlist_file=/etc/vsftpd.userlist' /etc/vsftpd.conf
-    sudo sed -i '/userlist_file=/etc/vsftpd.userlist/a userlist_deny=NO' /etc/vsftpd.conf
+    sudo sed -i '/userlist_enable=YES/a userlist_deny=NO' /etc/vsftpd.conf
     sudo service vsftpd restart
 else
     vsftpd -version
