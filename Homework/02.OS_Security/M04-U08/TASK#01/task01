@@ -184,9 +184,9 @@ echo -n "\n${cyan}${icon_wait} Checking SSH Service Status ${nocolor}"
 if systemctl is-active -q ssh
 then
     sleep 2
-    echo "${green} ${icon_ok} Active (running) ${nocolor}"
+    echo "${green}${icon_ok} Active (running) ${nocolor}"
 else
-    echo "${red} ${icon_ko} Inactive (stopped) ${nocolor}"
+    echo "${red}${icon_ko} Inactive (stopped) ${nocolor}"
     sleep 2
     echo "\n${cyan}${icon_wait} Starting SSH Service ${nocolor}"
     sleep 2
