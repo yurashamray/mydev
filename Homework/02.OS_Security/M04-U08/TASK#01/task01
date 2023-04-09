@@ -103,6 +103,8 @@ then
 else
     echo "${green}${icon_ok} Active (running) ${nocolor}"
 fi
+#-------------------------------------------------------------------
+# add UFW rules for Apache
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
 sleep 2
@@ -150,6 +152,8 @@ echo "${green}${icon_ok} Done! ${nocolor}"
 sleep 2
 echo "\n${purple}[${icon_stage} STAGE#04] - ${cyan}${icon_wait} Checking Python ${nocolor}\n"
 sleep 2
+# Uncomment the lines below if Python is not installed
+# because it was tested on a system with Python pre-installed.
 
 #if ! python3 --version 2>/dev/null
 #then
@@ -188,7 +192,8 @@ else
     ssh -V
     echo "${green}${icon_ok} SSH Server already installed! ${nocolor}"
 fi
-
+#--------------------------------------------------------------------
+#Check SSH service
 sleep 2
 echo -n "\n${cyan}${icon_wait} Checking SSH Service Status ${nocolor}"
 if systemctl is-active -q ssh
@@ -203,7 +208,7 @@ else
     sudo systemctl start ssh 1>/dev/null && echo "${green}${icon_ok} Done! ${nocolor}"
 fi
 #-------------------------------------------------------------------
-# Add firewall rules
+# add UFW rules for SSH
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules to UFW ${icon_arrowr} 'SSH' ${nocolor}"
 sleep 2
@@ -211,7 +216,6 @@ sudo ufw allow ssh
 sleep 2
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"
-
 
 ####################################################################
 ##########################| FINAL STAGE |###########################
