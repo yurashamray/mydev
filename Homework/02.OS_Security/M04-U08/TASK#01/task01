@@ -193,7 +193,7 @@ then
     sudo sed -i -e 's/#Port 22/Port 2222\n#Port 22/g' /etc/ssh/sshd_config
     # Disable SSH password login
     sudo sed -i -e 's/#PasswordAuthentication yes/PasswordAuthentication no\n#PasswordAuthentication yes/g' /etc/ssh/sshd_config
-    sudo systemctl start ssh 1>/dev/null
+    sudo systemctl start ssh
     echo -n "\n${green}${icon_ok} OpenSSH Server Installed Successfully! ${nocolor}";sleep 2; ssh -V
     continue  #Got to checking SSH Service Status
 else
@@ -213,7 +213,7 @@ else
     sleep 2
     echo "\n${cyan}${icon_wait} Starting SSH Service ${nocolor}"
     sleep 2
-    sudo systemctl start ssh 1>/dev/null && echo "${green}${icon_ok} Done! ${nocolor}"
+    sudo systemctl start ssh && echo "${green}${icon_ok} Done! ${nocolor}"
 fi
 #-------------------------------------------------------------------
 # add UFW rules for SSH
@@ -269,7 +269,7 @@ else
     sleep 2
     echo "\n${cyan}${icon_wait} Starting VSFTPD Service ${nocolor}"
     sleep 2
-    sudo systemctl start vsftpd 1>/dev/null && echo "${green}${icon_ok} Done! ${nocolor}"
+    sudo systemctl start vsftpd && echo "${green}${icon_ok} Done! ${nocolor}"
 fi
 #-------------------------------------------------------------------
 # add UFW rules for VSFTP
