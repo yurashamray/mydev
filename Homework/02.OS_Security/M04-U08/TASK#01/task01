@@ -238,9 +238,9 @@ echo -n "\n${cyan}${icon_wait} Checking VSFTPD Service Status ${nocolor}"
 if systemctl is-active -q vsftpd
 then
     sleep 2
-    echo "${green} ${icon_ok} Active (running) ${nocolor}"
+    echo "${green}${icon_ok} Active (running) ${nocolor}"
 else
-    echo "${red} ${icon_ko} Inactive (stopped) ${nocolor}"
+    echo "${red}${icon_ko} Inactive (stopped) ${nocolor}"
     sleep 2
     echo "\n${cyan}${icon_wait} Starting VSFTPD Service ${nocolor}"
     sleep 2
