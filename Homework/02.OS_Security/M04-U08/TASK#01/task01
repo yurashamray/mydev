@@ -283,7 +283,7 @@ fi
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules to UFW ${icon_arrowr} VSFTPD ${nocolor}"
 sleep 2
-sudo ufw allow from any to any port 20,21,10000:10100 proto tcp
+sudo ufw allow from any to any port 20,21,10000:10100 proto tcp comment 'Open ports for FTP'
 sleep 2
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"
