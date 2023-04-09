@@ -237,12 +237,13 @@ then
     sleep 2
     sudo apt install vsftpd -y
     sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.backup
-    sudo sed -i -e 's/#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf 
-    sudo sed -i -e 's/#local_umask=022/local_umask=022/' /etc/vsftpd.conf
-    sudo sed -i -e 's/#xferlog_std_format=YES/xferlog_std_format=YES/' /etc/vsftpd.conf
-    sudo sed -i -e 's/#chroot_local_user=YES/chroot_local_user=YES/' /etc/vsftpd.conf
+# Change /etc/vsftpd.conf 
+    sudo sed -i 's/#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf 
+    sudo sed -i 's/#local_umask=022/local_umask=022/' /etc/vsftpd.conf
+    sudo sed -i 's/#xferlog_std_format=YES/xferlog_std_format=YES/' /etc/vsftpd.conf
+    sudo sed -i 's/#chroot_local_user=YES/chroot_local_user=YES/' /etc/vsftpd.conf
     sudo sed -i '/chroot_local_user=YES/a allow_writeable_chroot=YES' /etc/vsftpd.conf
-    sudo sed -i -e 's/ssl_enable=NO/ssl_enable=YES/' /etc/vsftpd.conf
+    sudo sed -i 's/ssl_enable=NO/ssl_enable=YES/' /etc/vsftpd.conf
     sudo sed -i '/ssl_enable=YES/a ssl_tlsv1=YES' /etc/vsftpd.conf
     sudo sed -i '/ssl_tlsv1=YES/a ssl_sslv2=NO' /etc/vsftpd.conf
     sudo sed -i '/ssl_sslv2=NO/a ssl_sslv3=NO' /etc/vsftpd.conf
