@@ -241,16 +241,16 @@ then
     sudo sed -i -e 's/#local_umask=022/local_umask=022\n#local_umask=022/g' /etc/vsftpd.conf
     sudo sed -i -e 's/#xferlog_std_format=YES/xferlog_std_format=YES\n#xferlog_std_format=YES/g' /etc/vsftpd.conf
     sudo sed -i -e 's/#chroot_local_user=YES/chroot_local_user=YES\n#chroot_local_user=YES/g' /etc/vsftpd.conf
-    sudo sed -i 'chroot_local_user=YES/a allow_writeable_chroot=YES' /etc/vsftpd.conf
+    sudo sed -i 's/chroot_local_user=YES/a allow_writeable_chroot=YES' /etc/vsftpd.conf
     sudo sed -i -e 's/ssl_enable=NO/ssl_enable=YES/g' /etc/vsftpd.conf
-    sudo sed -i 'ssl_enable=YES/a ssl_tlsv1=YES' /etc/vsftpd.conf
-    sudo sed -i 'ssl_tlsv1=YES/a ssl_sslv2=NO' /etc/vsftpd.conf
-    sudo sed -i 'ssl_sslv2=NO/a ssl_sslv3=NO' /etc/vsftpd.conf
-    sudo sed -i 'ssl_sslv3=NO/a allow_anon_ssl=NO' /etc/vsftpd.conf
-    sudo sed -i 'allow_anon_ssl=NO/a force_local_data_ssl=YES' /etc/vsftpd.conf
-    sudo sed -i 'force_local_data_ssl=YES/a force_local_logins_ssl=YES' /etc/vsftpd.conf
-    sudo sed -i 'force_local_logins_ssl=YES/a ssl_ciphers=HIGH' /etc/vsftpd.conf
-    sudo sed -i 'ssl_ciphers=HIGH/a use_localtime=YES' /etc/vsftpd.conf
+    sudo sed -i 's/ssl_enable=YES/a ssl_tlsv1=YES' /etc/vsftpd.conf
+    sudo sed -i 's/ssl_tlsv1=YES/a ssl_sslv2=NO' /etc/vsftpd.conf
+    sudo sed -i 's/ssl_sslv2=NO/a ssl_sslv3=NO' /etc/vsftpd.conf
+    sudo sed -i 's/ssl_sslv3=NO/a allow_anon_ssl=NO' /etc/vsftpd.conf
+    sudo sed -i 's/allow_anon_ssl=NO/a force_local_data_ssl=YES' /etc/vsftpd.conf
+    sudo sed -i 's/force_local_data_ssl=YES/a force_local_logins_ssl=YES' /etc/vsftpd.conf
+    sudo sed -i 's/force_local_logins_ssl=YES/a ssl_ciphers=HIGH' /etc/vsftpd.conf
+    sudo sed -i 's/ssl_ciphers=HIGH/a use_localtime=YES' /etc/vsftpd.conf
     sudo service vsftpd restart
 else
     vsftpd -version
