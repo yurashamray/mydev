@@ -241,7 +241,7 @@ then
     sudo sed -i -e 's/#local_umask=022/local_umask=022\n#local_umask=022/g' /etc/vsftpd.conf
     sudo sed -i -e 's/#xferlog_std_format=YES/xferlog_std_format=YES\n#xferlog_std_format=YES/g' /etc/vsftpd.conf
     sudo sed -i -e 's/#chroot_local_user=YES/chroot_local_user=YES\n#chroot_local_user=YES/g' /etc/vsftpd.conf
-    sudo sed -i 's/chroot_local_user=YES/a allow_writeable_chroot=YES/' /etc/vsftpd.conf
+    sudo sed -i 's/chroot_local_user=YES/a allow_writeable_chroot=YES/g' /etc/vsftpd.conf
     sudo sed -i -e 's/ssl_enable=NO/ssl_enable=YES/g' /etc/vsftpd.conf
     sudo sed -i 's/ssl_enable=YES/a ssl_tlsv1=YES/g' /etc/vsftpd.conf
     sudo sed -i 's/ssl_tlsv1=YES/a ssl_sslv2=NO/g' /etc/vsftpd.conf
