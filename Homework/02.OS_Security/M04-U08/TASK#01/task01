@@ -251,6 +251,10 @@ then
     sudo sed -i '/force_local_data_ssl=YES/a force_local_logins_ssl=YES' /etc/vsftpd.conf
     sudo sed -i '/force_local_logins_ssl=YES/a ssl_ciphers=HIGH' /etc/vsftpd.conf
     sudo sed -i '/ssl_ciphers=HIGH/a use_localtime=YES' /etc/vsftpd.conf
+    sudo sed -i '/use_localtime=YES/a user_sub_token=$USER' /etc/vsftpd.conf
+    sudo sed -i '/user_sub_token=$USER/a local_root=/home/$USER/ftp' /etc/vsftpd.conf
+    sudo sed -i 'local_root=/home/$USER/ftp/a pasv_min_port=10000' /etc/vsftpd.conf
+    sudo sed -i 'pasv_min_port=10000/a pasv_max_port=10100' /etc/vsftpd.conf
     sudo service vsftpd restart
 else
     vsftpd -version
@@ -276,7 +280,7 @@ fi
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules to UFW ${icon_arrowr} VSFTPD ${nocolor}"
 sleep 2
-sudo ufw allow ftp
+sudo ufw allow from any to any port 20,21,10000:10100 proto tcp
 sleep 2
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"
