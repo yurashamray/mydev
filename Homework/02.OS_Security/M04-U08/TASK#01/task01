@@ -185,13 +185,17 @@ if ! ssh -V 2>/dev/null
 then
     echo -n "${red}${icon_ko} SSH Server not found!";sleep 2; echo "${cyan} ${icon_wait} Installing OpenSSH ${nocolor}"
     sleep 2
-    sudo apt install openssh-server -y && sudo systemctl start ssh 1>/dev/null
+    sudo apt install openssh-server -y
+    sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
+    sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
+    sudo systemctl start ssh 1>/dev/null
     echo -n "\n${green}${icon_ok} OpenSSH Server Installed Successfully! ${nocolor}";sleep 2; ssh -V
     continue  #Got to checking SSH Service Status
 else
     ssh -V
     echo "${green}${icon_ok} SSH Server already installed! ${nocolor}"
 fi
+
 #--------------------------------------------------------------------
 #Check SSH service
 sleep 2
