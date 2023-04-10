@@ -11,34 +11,22 @@
 #                           MIFIIB - 2023                          
 ####################################################################
 
-# Source directories variables
-src_home="/home/"
-src_ssh="/etc/ssh/sshd_config"
-src_rdp='/etc/xrdp/xrdp.ini'
-src_ftp="/etc/vsftpd.conf"
-src_log="/var/log/"
 
-# Destination
-dest_dir='/archive/'
 
-# File name
-filename=backup-$(date +%d-m%-Y%).tar.gz
-
-# Tape Archive tool
-tar zcvpf $dest_dir$filename $src_home $src_ssh $src_rdp $src_ftp $src_log
-
+# Backup HOME directory
+tar cpf /archive/home-backup-$(date '+%d.%B.%Y_%H:%M').tar -C / home
 
 # Backup SSH Config File
-# tar cpzf $dest_dir$filename $src_ssh
+tar cpf /archive/ssh-backup-$(date '+%d.%B.%Y_%H:%M').tar -C / etc/ssh/sshd_config
 
 # Backup RDP Config File
-# tar cpzf $dest_dir$filename $src_rdp
+sudo tar cpf /archive/xrdp-backup-$(date '+%d.%B.%Y_%H:%M').tar -C / etc/xrdp/xrdp.ini
 
 # Backup FTP Config file
-# tar cpzf $dest_dir$filename $src_ftp
+sudo tar cpf /archive/vsftpd-backup-$(date '+%d.%B.%Y_%H:%M').tar -C / etc/vsftpd.conf
 
 # Backup /var/log dir
-# tar cpzf $dest_dir$filename $src_log
+sudo tar cpf /archive/varlog-backup-$(date '+%d.%B.%Y_%H:%M').tar -C / var/log
 
 # To delete files older than 15 days
-find $dest_dir/* -mtime +15 -exec rm {} \;
+find /archive/* -mtime +15 -delete
