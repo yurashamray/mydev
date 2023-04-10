@@ -14,7 +14,7 @@
 # Source directories variables
 src_home="/home/"
 src_ssh="/etc/ssh/sshd_config"
-src_rdp=''
+src_rdp='/etc/xrdp/xrdp.ini'
 src_ftp="/etc/vsftpd.conf"
 src_log="/var/log/"
 

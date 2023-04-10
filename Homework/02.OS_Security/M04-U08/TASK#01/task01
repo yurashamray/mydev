@@ -230,9 +230,12 @@ then
     sudo sed -i '/userlist_deny=NO/a chroot_local_user=YES' /etc/vsftpd.conf
     sudo sed -i '/userlist_deny=NO/a allow_writeable_chroot=YES' /etc/vsftpd.conf
     sudo service vsftpd restart
-else
+    echo "\n${green}${icon_ok} VSFTPD Installed Successfully! ${nocolor}"
+    sleep 2
     vsftpd -version
+else
     echo "${green}${icon_ok} VSFTPD already installed! ${nocolor}"
+    vsftpd -version
 fi
 #--------------------------------------------------------------------
 #Check VSFTPD service
@@ -252,9 +255,32 @@ fi
 
 ####################################################################
 ############################| STAGE#07 |############################
-# Enabling UFW firewall and add rules for Apache, SSH, FTP
+# Install & Setup XRDP
 sleep 2
-echo -n "\n${purple}[${icon_stage} STAGE#07] - ${cyan}${icon_wait} Checking UFW (Uncomplicated Firewall) ${nocolor}"
+echo "\n${purple}[${icon_stage} STAGE#07] - ${cyan}${icon_wait} Checking XRDP ${nocolor}\n"
+sleep 2
+if systemctl is-active -q xrdp
+then
+    sleep 2
+    echo "${green}${icon_ok} Active (running) ${nocolor}"
+else
+    echo "${red}${icon_ko} Inactive (stopped) ${nocolor}"
+    sleep 2
+    echo "\n${cyan}${icon_wait} Installing XRDP and packages${nocolor}"
+    sleep 2
+    # install the xfce and xfce-goodies packages
+    sudo apt install xfce4 xfce4-goodies -y
+    # installing xrdp
+    sudo apt install xrdp -y
+    echo "xfce4-session" | tee .xsession
+    sudo systemctl restart xrdp && echo "${green}${icon_ok} Done! ${nocolor}"
+fi
+
+####################################################################
+############################| STAGE#08 |############################
+# Enabling UFW firewall and add rules for Apache, SSH, FTP, RDP
+sleep 2
+echo -n "\n${purple}[${icon_stage} STAGE#08] - ${cyan}${icon_wait} Checking UFW (Uncomplicated Firewall) ${nocolor}"
 sleep 2
 if sudo ufw status | grep -q inactive
 then
@@ -280,6 +306,10 @@ sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'FTP' ${nocolor}"
 sleep 2
 sudo ufw allow from any to any port 20,21,10000:10100 proto tcp comment 'Open ports for FTP'
+sleep 2
+echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'RDP' ${nocolor}"
+sleep 2
+sudo ufw allow from any to any port 3389 comment 'Open port for RDP'
 sleep 2
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"
