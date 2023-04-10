@@ -2,7 +2,7 @@
 ####################################################################
 ############################| TASK#02 |#############################
 #                           DESCRIPTION:                           
-#          Script for backing up the /home /var/log directories,
+#     Simple script for backing up the /home /var/log directories,
 #                 the config files of SSH, RDP, FTP
 #          Cron task to run this script every Friday at 18:30.
 #    Move the backup to a separate pre-created /archive directory
