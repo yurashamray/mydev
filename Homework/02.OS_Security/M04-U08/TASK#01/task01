@@ -295,22 +295,27 @@ fi
 #-------------------------------------------------------------------
 # Add rules for Apache, SSH, FTP, RDP
 sleep 2
+# Apache
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
 sleep 2
 sudo ufw allow from any to any port 80,443 proto tcp comment 'Open ports http/https'
 sleep 2
+# SSH
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'SSH' ${nocolor}"
 sleep 2
 sudo ufw allow 2222/tcp comment 'Open port for SSH'
 sleep 2
+# FTP
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'FTP' ${nocolor}"
 sleep 2
 sudo ufw allow from any to any port 20,21,10000:10100 proto tcp comment 'Open ports for FTP'
 sleep 2
+# RDP
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'RDP' ${nocolor}"
 sleep 2
 sudo ufw allow from any to any port 3389 comment 'Open port for RDP'
 sleep 2
+# Display all rules
 sudo ufw status numbered
 echo "${green}${icon_ok} Done! ${nocolor}"
 
