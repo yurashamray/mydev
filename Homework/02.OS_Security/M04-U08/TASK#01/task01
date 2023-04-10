@@ -264,17 +264,20 @@ then
     sleep 2
     echo "${green}${icon_ok} Active (running) ${nocolor}"
 else
-    echo "${red}${icon_ko} Inactive (stopped) ${nocolor}"
+    echo -n "${red}${icon_ko} Inactive (stopped) ${nocolor}"
     sleep 2
-    echo "\n${cyan}${icon_wait} Installing XRDP and packages${nocolor}"
+    echo "${cyan}${icon_wait} Installing XRDP and packages${nocolor}"
     sleep 2
     # install the xfce and xfce-goodies packages
     sudo apt install xfce4 xfce4-goodies -y
     # installing xrdp
     sudo apt install xrdp -y
-    echo "xfce4-session" | tee .xsession
-    sudo systemctl restart xrdp && echo "${green}${icon_ok} Done! ${nocolor}"
 fi
+sleep 2
+echo -n "\n${cyan}${icon_wait} Adding xfce4-session ${icon_arrowr} .xsession ${nocolor}"
+sleep 2
+echo "xfce4-session" | tee .xsession
+sudo systemctl restart xrdp && echo "${green}${icon_ok} Done! ${nocolor}"
 
 ####################################################################
 ############################| STAGE#08 |############################
