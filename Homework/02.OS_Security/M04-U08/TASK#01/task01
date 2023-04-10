@@ -293,7 +293,7 @@ else
     echo "${green}${icon_ok} Active (running) ${nocolor}"
 fi
 #-------------------------------------------------------------------
-# Add rules for Apache, SSH, FTP
+# Add rules for Apache, SSH, FTP, RDP
 sleep 2
 echo "\n${cyan}${icon_wait} Adding Rules ${icon_arrowr} 'Apache' ${nocolor}"
 sleep 2
