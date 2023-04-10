@@ -12,8 +12,6 @@
 #              Tested on Ubuntu 22.10 (codename: Kinetic)
 ####################################################################
 
-
-
 # Backup HOME directory
 tar cpf /archive/home-backup-$(date '+%d.%B.%Y_%H:%M').tar -C / home
 
