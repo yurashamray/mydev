@@ -1,2 +1,3 @@
+![1](https://github.com/yurashamray/mydev/assets/55129997/fd2ba385-e839-4ef7-bbfd-978816483c0f)
 * Модуль.1.Юнит.2 Подход к управлению инфраструктурой Ansible
 * Практическое задание
