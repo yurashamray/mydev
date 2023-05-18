@@ -8,11 +8,6 @@ INSERT INTO `user_list` (`id`, `name`, `surname`) VALUES
 (1, 'Pancho', 'Villa'),
 (2, 'Salvatore', 'Giuliano'),
 (3, 'Sultana', 'Daku');
-(4, 'Carl', 'Adamson');
-(5, 'Apache', 'Kid');
-(6, 'Bill', 'Applegate');
-(7, 'Charles', 'Allen');
-(8, 'Ernest', 'Antony');
 
 ALTER TABLE `user_list`
   ADD PRIMARY KEY (`id`);
