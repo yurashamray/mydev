@@ -16,6 +16,7 @@ RUN docker-php-ext-install -y mysqli pdo pdo_mysql
 
 # Копирование файла index.php в контейнер
 COPY index.php /var/www/html/index.php
-
+COPY mifiib-secret.yaml /var/www/html/mifiib-secret.yaml
+COPY mifiib-config.yaml /var/www/html/mifiib-config.yaml
 # Настройка прав на директорию
 RUN chown -R www-data:www-data /var/www/html
