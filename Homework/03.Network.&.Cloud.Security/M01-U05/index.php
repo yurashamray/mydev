@@ -12,8 +12,7 @@ $secretFile = 'mifiib-secret.yaml';
 $secret = yaml_parse_file($secretFile);
 $databaseUsername = base64_decode($secret['data']['username']);
 $databasePassword = base64_decode($secret['data']['password']);
-$dbName = 'mifiib';
-$link = mysqli_connect($databaseServer, $databaseUsername, $databasePassword, $dbName);
+$link = mysqli_connect($databaseServer, $databaseUsername, $databasePassword, "mifiib");
 
 if (mysqli_connect_errno()) {
     printf("Can't connect to: %s\n", mysqli_connect_error());
