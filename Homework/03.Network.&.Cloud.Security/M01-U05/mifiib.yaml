@@ -15,7 +15,7 @@ spec:
         app: mifiib
     spec:
       containers:
-      - name: mifiib_db
+      - name: mifiibdb
         image: yurashamray/mysql:5.7
         ports:
         - containerPort: 3306
