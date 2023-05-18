@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mifiib-deployment
+  labels:
+    app: mifiib
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mifiib
+  template:
+    metadata:
+      labels:
+        app: mifiib
+    spec:
+      containers:
+      - name: mifiib_db
+        image: mysql:5.7
+        ports:
+        - containerPort: 3306
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+        env:
+        - name: MYSQL_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mifiib-secret
+              key: username
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mifiib-secret
+              key: password
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mifiib-service
+spec:
+  selector:
+    app: mifiib
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306

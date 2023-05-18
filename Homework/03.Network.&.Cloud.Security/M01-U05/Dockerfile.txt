@@ -1,0 +1,21 @@
+FROM php:7.4-apache
+
+LABEL Yura Shamray
+
+# Установка YAML зависимостей
+RUN apt-get update && \
+    apt-get install -y libyaml-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+# Установка YAML расширений
+RUN pecl install yaml && \
+    docker-php-ext-enable yaml
+
+# Установка MySQL расширений
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Копирование файла index.php в контейнер
+COPY index.php /var/www/html/index.php
+
+# Настройка прав на директорию
+RUN chown -R www-data:www-data /var/www/html
