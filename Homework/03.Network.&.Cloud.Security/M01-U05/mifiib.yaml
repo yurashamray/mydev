@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mifiib_db
-        image: mysql:5.7
+        image: yurashamray/mysql:5.7
         ports:
         - containerPort: 3306
         resources:
