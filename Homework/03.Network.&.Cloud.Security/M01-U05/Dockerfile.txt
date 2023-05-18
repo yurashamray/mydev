@@ -8,11 +8,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Установка YAML расширений
-RUN pecl install yaml && \
+RUN pecl install -y yaml && \
     docker-php-ext-enable yaml
 
 # Установка MySQL расширений
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install -y mysqli pdo pdo_mysql
 
 # Копирование файла index.php в контейнер
 COPY index.php /var/www/html/index.php
