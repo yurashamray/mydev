@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: php:7.4-apache
+        image: yurashamray/php:7.4-apache
         ports:
         - containerPort: 80
         resources:
