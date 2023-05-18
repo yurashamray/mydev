@@ -4,4 +4,3 @@ USER root
 RUN chmod 755 /var/lib/mysql
 ENV MYSQL_DATABASE=mifiib
 COPY ./database.sql /docker-entrypoint-initdb.d/
-RUN echo "character-set-server = utf8mb4" >> /etc/mysql/my.cnf
