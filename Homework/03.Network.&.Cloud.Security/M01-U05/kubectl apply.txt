@@ -1,4 +1,0 @@
-kubectl apply -f mifiib-config.yaml
-kubectl apply -f mifiib-secret.yaml
-kubectl apply -f mifiib.yaml
-kubectl apply -f webapp.yaml
