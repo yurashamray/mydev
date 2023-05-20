@@ -5,7 +5,7 @@
 Выполнил: Юрий Шамрай (yura.shamray@gmail.com)
 
 """
-from colorama import Fore, Style
+from colorama import Fore, Style # Импортируем модуль colorama для цветного вывода
 
 # Правила игры
 print(Fore.GREEN + '*********************************************', Style.RESET_ALL)
@@ -19,19 +19,19 @@ print(Fore.GREEN + '*************' + Style.RESET_ALL + '| КРЕСТИКИ-НО�
       'Введите номер клетки, куда поставить X или 0\n' +
       Fore.GREEN + '*********************************************', Style.RESET_ALL)
 
-# Словарь для игрового поля
+# Создаем словарь для игрового поля
 theBoard = {'7': ' ', '8': ' ', '9': ' ',
             '4': ' ', '5': ' ', '6': ' ',
             '1': ' ', '2': ' ', '3': ' '}
 
 
-board_keys = []
+board_keys = [] # Создаем пустой список для ключей игрового поля
 
-for i in theBoard:
+for i in theBoard: # Перебираем ключи словаря и добавляем их в список
     board_keys.append(i)
 
 
-# Игровое поле
+# Функция для отображения игрового поля
 def printboard(board):
     print(board['7'] + '|' + board['8'] + '|' + board['9'])
     print('-+-+-')
@@ -41,8 +41,8 @@ def printboard(board):
 
 
 def game():
-    turn = 'X'
-    count = 0
+    turn = 'X' # Инициализируем текущего игрока
+    count = 0 # Инициализируем счетчик ходов
 
     for i in range(10):
         printboard(theBoard)
@@ -102,21 +102,21 @@ def game():
                 print(Fore.GREEN + "**** Игрок " + turn + " выиграл! ****", Style.RESET_ALL)
                 break
 
-                # Если ни X, ни O не выиграют и доска будет заполнена, тогда результат «Ничья».
-        if count == 9:
+                
+        if count == 9: # Если доска заполнена, то объявляем ничью
             print("\nИгра Окончена!")
             print(Fore.YELLOW + "Ничья!", Style.RESET_ALL)
             break
 
-        # Смена игрока после каждого хода.
-        if turn == 'X':
+        
+        if turn == 'X': # Смена игрока после каждого хода
             turn = 'O'
         else:
             turn = 'X'
 
-            # Запрашиваем, хочет ли игрок перезапустить игру или нет.
-    restart = input("\nНовая Игра?(y/n)")
-    if restart == 'y' or restart == 'Y':
+           
+    restart = input("\nНовая Игра?(y/n)") # Запрашиваем у пользователя, хочет ли он сыграть еще раз
+    if restart == 'y' or restart == 'Y': # Если пользователь соглашается, то очищаем поле и начинаем новую игру
         for key in board_keys:
             theBoard[key] = " "
 
