@@ -1,20 +1,20 @@
-version: "3.9"
+version: "3.9" # Версия Docker Compose
 services:
   php-apache:
     ports:
-      - "80:80"
-    image: shamray7:latest
+      - "80:80" # Проброс портов: хост:контейнер
+    image: shamray7:latest # Используем образ с именем "shamray7" и тегом "latest"
     volumes:
-      - ./www:/var/www/html
+      - ./www:/var/www/html  # Привязка локальной директории "./www" к директории "/var/www/html" в контейнере
   mysql:
     ports:
-      - "3306:3306"
-    build: './build/mysql'
+      - "3306:3306" # Проброс портов: хост:контейнер
+    build: './build/mysql' # Сборка образа MySQL с использованием Dockerfile из директории "./build/mysql"
     environment:
-      MYSQL_ROOT_PASSWORD: "secret123"
-      MYSQL_DATABASE: "mifiib"
+      MYSQL_ROOT_PASSWORD: "secret123" # Установка пароля для пользователя root
+      MYSQL_DATABASE: "mifiib" # Создание базы данных с именем "mifiib"
     volumes:
-      - dbData:/var/lib/mysql
+      - dbData:/var/lib/mysql # Привязка Docker Volume "dbData" к директории "/var/lib/mysql" в контейнере
 volumes:
-  www:
-  dbData:
+  www: # Создание Docker Volume с именем "www"
+  dbData: # Создание Docker Volume с именем "dbData"
