@@ -20,7 +20,7 @@ parser.add_argument("-n", "--num_of_hosts", type=int, help="Number of hosts")
 
 
 # Функция для отправки HTTP-запроса
-def sent_http_request(target, method, headers=None, payload=None, task="scan"):
+def send_http_request(target, method, headers=None, payload=None, task="scan"):
     headers_dict = dict()
     payload_dict = dict()
 
@@ -83,4 +83,4 @@ if payload == "":
     payload = None
     
 # Вызываем функцию для отправки HTTP-запроса    
-sent_http_request(target, method, headers, payload, task)
+send_http_request(target, method, headers, payload, task)
