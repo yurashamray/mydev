@@ -1,32 +1,40 @@
 <?php
 
-error_reporting(E_ALL); // Включение вывода всех ошибок
+# Включение вывода всех ошибок
+error_reporting(E_ALL);
 
-$link = mysqli_connect("mysql", "root", "secret123", "mifiib"); // Подключение к MySQL серверу
+# Установление соединения с базой данных MySQL
+$link = mysqli_connect("mysql", "root", "secret123", "mifiib");
 
+# Вывод сообщения об ошибке подключения
 if (mysqli_connect_errno()) {
-    printf("Can't connect to: %s\n", mysqli_connect_error()); // Вывод сообщения об ошибке подключения
-    exit(); // Завершение выполнения скрипта
+    printf("Can't connect to: %s\n", mysqli_connect_error()); 
+    exit();
 }
 
 $data = '';
 
-if ($result = mysqli_query($link, "SELECT * FROM user_list")) { // Выполнение запроса к базе данных
+# Цикл для обработки каждой строки результата запроса
+if ($result = mysqli_query($link, "SELECT * FROM user_list")) { 
     while ($row = $result->fetch_assoc()) {
-        //echo $row['id'].' - '.$row['name'].' - '.$row['surname'].'<br>'; // Вывод данных каждой строки результата
+        //echo $row['id'].' - '.$row['name'].' - '.$row['surname'].'<br>';
 		
-		$data.= "<tr><td>".$row['id']."</td><td>".$row['name']."</td><td>".$row['surname']."</td></tr>"; // Формирование строки данных для вывода
+	        # Добавление данных каждой строки в переменную $data
+		$data.= "<tr><td>".$row['id']."</td><td>".$row['name']."</td><td>".$row['surname']."</td></tr>";
     }
 }
 
+# Формирование HTML-кода для вывода таблицы с данными
 $html = '
 	<style>.users { padding: 0; margin: 0 auto; border: 1px solid #000; color: #000; border-collapse: collapse; } .users th { text-align: left; } .users td { padding: 5px; font-size: 14px; }</style>
 	<h1 style="text-align: center;">THE STUDENTS LIST (MIFIIB)</h1>
 	<table class="users" padding="0" cellspacing="0"><tr><th width="100">ID</th><th width="300">Name</th><th width="300">Surname</th></tr>'.$data.'</table>
 ';
 
-echo $html; // Вывод сформированной HTML-таблицы
+# Вывод HTML-кода на экран
+echo $html;
 
-phpinfo(); // Вывод информации о PHP-конфигурации
+# Вывод информации о PHP-конфигурации
+phpinfo();
 
 ?>
