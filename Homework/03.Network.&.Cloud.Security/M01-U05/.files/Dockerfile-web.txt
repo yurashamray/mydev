@@ -1,22 +1,23 @@
-FROM php:7.4-apache
+FROM php:7.4-apache # Используется базовый образ PHP 7.4 с веб-сервером Apache
 
-LABEL Yura Shamray
+LABEL Yura Shamray # Добавляется метка для идентификации автора
 
 # Установка YAML зависимостей
-RUN apt-get update && \
+RUN apt-get update && \ # Обновление пакетов и установка зависимостей libyaml-dev
     apt-get install -y libyaml-dev && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* # Удаление временных файлов после установки
 
 # Установка YAML расширений
-RUN pecl install yaml && \
-    docker-php-ext-enable yaml
+RUN pecl install yaml && \ # Установка расширения YAML с помощью pecl
+    docker-php-ext-enable yaml # Включение расширения YAML для PHP
 
 # Установка MySQL расширений
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql # Установка расширений для работы с MySQL в PHP
 
-# Копирование файла index.php в контейнер
+# Копирование файлов index.php, mifiib-secret.yaml и mifiib-config.yaml в директорию /var/www/html
 COPY index.php /var/www/html/index.php
 COPY mifiib-secret.yaml /var/www/html/mifiib-secret.yaml
 COPY mifiib-config.yaml /var/www/html/mifiib-config.yaml
+
 # Настройка прав на директорию
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html # Настройка владельца и группы для директории /var/www/html
