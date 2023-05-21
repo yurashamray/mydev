@@ -1,6 +1,7 @@
 <?php
 
-error_reporting(E_ALL);
+# Включение вывода всех ошибок
+error_reporting(E_ALL); 
 
 # Загрузка значения адреса сервера из файла mifiib-config.yaml
 $configFile = 'mifiib-config.yaml';
