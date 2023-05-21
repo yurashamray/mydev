@@ -1,8 +1,10 @@
 #!/usr/bin/env python
-#
+
+#------------------------------------
 # Скрипт для смены MAC-адреса в Linux
 # Yuriy Shamray - MIFIIB
-#
+#------------------------------------
+
 # Подключаем модули
 import subprocess
 import argparse
