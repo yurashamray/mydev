@@ -1,6 +1,6 @@
-FROM mysql:5.7
-LABEL Yura Shamray
-USER root
-RUN chmod 755 /var/lib/mysql
-ENV MYSQL_DATABASE=mifiib
-COPY ./database.sql /docker-entrypoint-initdb.d/
+FROM mysql:5.7 # Используется базовый образ MySQL 5.7
+LABEL Yura Shamray # Добавляется метка для идентификации автора
+USER root # Устанавливается пользователь root для выполнения последующих команд 
+RUN chmod 755 /var/lib/mysql # Изменяются разрешения для каталога /var/lib/mysql 
+ENV MYSQL_DATABASE=mifiib # Устанавливается переменная среды MYSQL_DATABASE со значением mifiib
+COPY ./database.sql /docker-entrypoint-initdb.d/ # Копируется файл database.sql в каталог /docker-entrypoint-initdb.d/
