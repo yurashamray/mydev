@@ -1,6 +1,10 @@
+# Версия API
 apiVersion: v1
+# Тип объекта
 kind: ConfigMap
 metadata:
+    # Имя конфиги
     name: mifiib-config
 data:
+    # Ключ-значение данных в конфиге
     mifiib-url: mifiib-service
