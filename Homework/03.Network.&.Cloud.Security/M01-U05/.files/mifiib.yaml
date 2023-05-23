@@ -1,49 +1,73 @@
+# Версия API для развертывания приложений
 apiVersion: apps/v1
+# Тип объекта - развертывание
 kind: Deployment
 metadata:
+  # Имя развертывания
   name: mifiib-deployment
   labels:
+    # Метка приложения
     app: mifiib
 spec:
+  # Количество реплик
   replicas: 1
   selector:
     matchLabels:
+      # Селектор для соответствия меткам приложения
       app: mifiib
   template:
     metadata:
       labels:
+        # Метка для шаблона
         app: mifiib
     spec:
       containers:
+      # Имя контейнера
       - name: mifiibdb
+        # Образ контейнера
         image: yurashamray/mysql:5.7
         ports:
+        # Порт контейнера
         - containerPort: 3306
         resources:
           limits:
+            # Лимит ресурсов CPU
             cpu: "0.5"
+            # Лимит ресурсов памяти
             memory: "512Mi"
         env:
+        # Имя переменной среды
         - name: MYSQL_ROOT_USERNAME
           valueFrom:
             secretKeyRef:
+              # Имя секрета
               name: mifiib-secret
+              # Ключ секрета для значения переменной среды
               key: username
+        # Имя переменной среды
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
+              # Имя секрета
               name: mifiib-secret
+              # Ключ секрета для значения переменной среды
               key: password
 ---
 
+# Версия API для сервиса
 apiVersion: v1
+# Тип объекта - сервис
 kind: Service
 metadata:
+  # Имя сервиса
   name: mifiib-service
 spec:
   selector:
+    # Селектор для соответствия меткам приложения
     app: mifiib
   ports:
     - protocol: TCP
+      # Порт сервиса
       port: 3306
+      # Целевой порт
       targetPort: 3306
