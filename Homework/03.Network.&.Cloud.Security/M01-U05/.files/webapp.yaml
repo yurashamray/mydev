@@ -1,56 +1,85 @@
+# Версия API
 apiVersion: apps/v1
+# Тип объекта - развертывание
 kind: Deployment
 metadata:
+  # Имя развертывания
   name: webapp-deployment
   labels:
+    # Метка приложения
     app: webapp
 spec:
+  # Количество реплик
   replicas: 1
   selector:
     matchLabels:
+      # Селектор для соответствия меткам приложения
       app: webapp
   template:
     metadata:
       labels:
+        # Метка для шаблона развертывания
         app: webapp
     spec:
       containers:
+      # Имя контейнера
       - name: webapp
+        # Образ контейнера
         image: yurashamray/php:7.4-apache
         ports:
+        # Порт контейнера
         - containerPort: 80
         resources:
           limits:
+            # Лимит ресурсов CPU
             cpu: "0.5"
+            # Лимит ресурсов памяти
             memory: "512Mi"
         env:
+        # Имя переменной среды
         - name: USER_NAME
           valueFrom:
             secretKeyRef:
+              # Имя секрета
               name: mifiib-secret
+              # Ключ секрета для значения переменной среды
               key: username
+        # Имя переменной среды
         - name: USER_PWD
           valueFrom:
             secretKeyRef:
+              # Имя секрета
               name: mifiib-secret
+              # Ключ секрета для значения переменной среды
               key: password
+        # Имя переменной среды
         - name: DB_URL
           valueFrom:
             configMapKeyRef:
+              # Имя конфиги
               name: mifiib-config
+              # Ключ конфиги
               key: mifiib-url
 ---
 
+# Версия API
 apiVersion: v1
+# Тип объекта - сервис
 kind: Service
 metadata:
+  # Имя сервиса
   name: webapp-service
 spec:
+  # Тип сервиса
   type: NodePort
   selector:
+    # Селектор для соответствия меткам приложения
     app: webapp
   ports:
     - protocol: TCP
+      # Порт сервиса
       port: 80
+      # Целевой порт
       targetPort: 80
+      # Порт на узле (NodePort)
       nodePort: 30080
