@@ -1,18 +1,22 @@
-FROM php:7.4-apache # Используется базовый образ PHP 7.4 с веб-сервером Apache
+# Используется базовый образ PHP 7.4 с веб-сервером Apache
+FROM php:7.4-apache
 
-LABEL Yura Shamray # Добавляется метка для идентификации автора
+# Добавляется метка для идентификации автора
+LABEL Yura Shamray
 
-# Установка YAML зависимостей
-RUN apt-get update && \ # Обновление пакетов и установка зависимостей libyaml-dev
+# Обновление пакетов и установка зависимостей libyaml-dev
+RUN apt-get update && \
     apt-get install -y libyaml-dev && \
-    rm -rf /var/lib/apt/lists/* # Удаление временных файлов после установки
+    # Удаление временных файлов после установки
+    rm -rf /var/lib/apt/lists/*
 
 # Установка YAML расширений
-RUN pecl install yaml && \ # Установка расширения YAML с помощью pecl
-    docker-php-ext-enable yaml # Включение расширения YAML для PHP
+RUN pecl install yaml && \
+    # Включение расширения YAML для PHP
+    docker-php-ext-enable yaml
 
 # Установка MySQL расширений
-RUN docker-php-ext-install mysqli pdo pdo_mysql # Установка расширений для работы с MySQL в PHP
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Копирование файлов index.php, mifiib-secret.yaml и mifiib-config.yaml в директорию /var/www/html
 COPY index.php /var/www/html/index.php
@@ -20,4 +24,4 @@ COPY mifiib-secret.yaml /var/www/html/mifiib-secret.yaml
 COPY mifiib-config.yaml /var/www/html/mifiib-config.yaml
 
 # Настройка прав на директорию
-RUN chown -R www-data:www-data /var/www/html # Настройка владельца и группы для директории /var/www/html
+RUN chown -R www-data:www-data /var/www/html
