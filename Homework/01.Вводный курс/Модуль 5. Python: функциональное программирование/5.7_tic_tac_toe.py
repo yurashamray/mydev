@@ -2,7 +2,7 @@
 Курс: MIFIIB
 Модуль.5.Python
 Игровое практическое задание - «Крестики-нолики»
-Выполнил: Юрий Шамрай (yura.shamray@gmail.com)
+Выполнил: Yuriy Shamray
 
 """
 from colorama import Fore, Style # Импортируем модуль colorama для цветного вывода
