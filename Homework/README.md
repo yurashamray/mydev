@@ -17,5 +17,3 @@
 ## Автор
 
 - [PROSPERO](https://github.com/yurashamray/)
-
-## Практические задания (Homework)
