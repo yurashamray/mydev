@@ -3,7 +3,6 @@
 Модуль.5.Python
 Игровое практическое задание - «Крестики-нолики»
 Выполнил: Yuriy Shamray
-
 """
 from colorama import Fore, Style # Импортируем модуль colorama для цветного вывода
 
