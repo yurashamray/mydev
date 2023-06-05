@@ -1,6 +1,7 @@
-![1 9](https://user-images.githubusercontent.com/55129997/218629012-ff19bddd-c518-42d8-86c7-3e9079ce313f.jpg)
-
 * ✅Выполнено 5/5
 * Модуль.1. Архитектура ОС Linux
 * Практическое задание - Реализовать систему из 2-х докер-контейнеров
+
+![1 9](https://user-images.githubusercontent.com/55129997/218629012-ff19bddd-c518-42d8-86c7-3e9079ce313f.jpg)
+
 
