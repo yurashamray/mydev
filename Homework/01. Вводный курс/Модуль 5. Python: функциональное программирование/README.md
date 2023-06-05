@@ -1,4 +1,5 @@
-![5 7](https://user-images.githubusercontent.com/55129997/218631583-428038dd-8c5d-47a5-9c35-fc9c58374f5a.jpg)
 * ✅Выполнено 11/11
 * Модуль.5. Python: Функциональное программирование
 * Практическое задание - «Крестики-нолики»
+
+![5 7](https://user-images.githubusercontent.com/55129997/218631583-428038dd-8c5d-47a5-9c35-fc9c58374f5a.jpg)
