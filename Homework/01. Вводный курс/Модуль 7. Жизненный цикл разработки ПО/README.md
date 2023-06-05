@@ -1,4 +1,6 @@
-![1](https://user-images.githubusercontent.com/126131478/220816240-c743a638-7e2a-4570-acee-159c4ffda8b6.jpg)
 * ✅Выполнено 15/15
 * Модуль.7. Жизненный цикл разработки ПО
 * Практическое задание - Сквозная задача (final)
+
+![1](https://user-images.githubusercontent.com/126131478/220816240-c743a638-7e2a-4570-acee-159c4ffda8b6.jpg)
+
