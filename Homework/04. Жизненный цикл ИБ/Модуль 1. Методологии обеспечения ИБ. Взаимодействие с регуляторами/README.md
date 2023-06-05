@@ -1,5 +1,6 @@
-<img width="1393" alt="Screenshot 2023-06-02 012638" src="https://github.com/yurashamray/mydev/assets/55129997/7aeb08a3-4bfe-4bf1-b60d-b13d1000b2ca">
-
 * ✅Выполнено 5/5
 * Модуль 1. Методологии обеспечения ИБ. Взаимодействие с регуляторами
 * ПРАКТИЧЕСКОЕ ЗАДАНИЕ: Политика Аутентификации
+
+![1](https://github.com/yurashamray/mydev/assets/55129997/2f2398d3-4241-4772-a045-a26e2f75ef62)
+
