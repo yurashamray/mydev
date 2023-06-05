@@ -1,4 +1,5 @@
-![1](https://user-images.githubusercontent.com/55129997/231429917-bc27c209-49ce-4e67-b6eb-d32f8ecd9686.png)
 * ✅Выполнено 3/3
 * Модуль 4.  Администрирование встроенных средств защиты Linux
 * Практическая работа с проверкой ментором
+
+![1](https://user-images.githubusercontent.com/55129997/231429917-bc27c209-49ce-4e67-b6eb-d32f8ecd9686.png)
