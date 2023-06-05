@@ -1,4 +1,5 @@
-![Screenshot 2023-03-18 151332](https://user-images.githubusercontent.com/55129997/226097152-f81718a4-f0b5-460c-8071-2dd1fcfb4885.png)
 * ✅Выполнено 4/4
 * Модуль.1.  Администрирование OC Windows: безопасность хоста
 * Практическое задание
+
+![Screenshot 2023-03-18 151332](https://user-images.githubusercontent.com/55129997/226097152-f81718a4-f0b5-460c-8071-2dd1fcfb4885.png)
