@@ -3,5 +3,5 @@
 
 [![Практикум](https://skillicons.dev/icons?i=bash,powershell,py,php,flask,ansible,docker,kubernetes)](https://skillicons.dev)
 
-[![skillfactory](https://img.shields.io/badge/mifi-skillfactory-green?logo=neutralinojs&logoColor=white)]([https://black.readthedocs.io/](https://skillfactory.ru "Go to Black homepage")
+[![skillfactory](https://img.shields.io/badge/mifi-skillfactory-green?logo=neutralinojs&logoColor=white)](https://skillfactory.ru "Go skillfactory.ru")
 [![OS - Linux](https://img.shields.io/badge/OS-Linux-blue?logo=linux&logoColor=white)](https://www.linux.org/ "Go to Linux homepage") [![OS - Windows](https://img.shields.io/badge/OS-Windows-blue?logo=windows&logoColor=white)](https://www.microsoft.com/ "Go to Microsoft homepage")
