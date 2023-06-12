@@ -1,7 +1,7 @@
 ## Детализированные оценки
 |[Вводный курс](https://github.com/yurashamray/mydev/tree/main/Homework/01.%20%D0%92%D0%B2%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%BA%D1%83%D1%80%D1%81)                                                               |[Оценка](https://github.com/yurashamray/mydev/tree/main/Homework/01.%20%D0%92%D0%B2%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%BA%D1%83%D1%80%D1%81)|
 |:---                                                                       |  ---:|
-|Модуль 1. Архитектура ОС Linux                                             |51/51 |
+|[Модуль 1. Архитектура ОС Linux](https://github.com/yurashamray/mydev/tree/main/Homework/01.%20%D0%92%D0%B2%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%BA%D1%83%D1%80%D1%81/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C%201.%20%D0%90%D1%80%D1%85%D0%B8%D1%82%D0%B5%D0%BA%D1%82%D1%83%D1%80%D0%B0%20%D0%9E%D0%A1%20Linux)                                             |51/51 |
 |Модуль 2. Сети и сетевые сервисы                                           |43/43 |
 |Модуль 3. Python: установка, переменные и типы данных                      |41/41 |
 |Модуль 4. Python: циклы и функции                                          |6/6   |
