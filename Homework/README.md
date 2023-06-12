@@ -1,5 +1,5 @@
 ## Детализированные оценки
-|[Вводный курс](https://github.com/yurashamray/mydev/tree/main/Homework/01.%20%D0%92%D0%B2%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%BA%D1%83%D1%80%D1%81)                                                               |Оценка|
+|[Вводный курс](https://github.com/yurashamray/mydev/tree/main/Homework/01.%20%D0%92%D0%B2%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%BA%D1%83%D1%80%D1%81)                                                               |[Оценка](https://github.com/yurashamray/mydev/tree/main/Homework/01.%20%D0%92%D0%B2%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9%20%D0%BA%D1%83%D1%80%D1%81)|
 |:---                                                                       |  ---:|
 |Модуль 1. Архитектура ОС Linux                                             |51/51 |
 |Модуль 2. Сети и сетевые сервисы                                           |43/43 |
