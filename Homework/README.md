@@ -9,7 +9,7 @@
 |Модуль 6. Python: написание утилит для ИБ                                  |29/29 |
 |Модуль 7. Жизненный цикл разработки ПО                                     |40/40 |
 |                                                                           |      |
-|[**Безопасность операционных систем**](https://github.com/yurashamray/mydev/tree/main/Homework/02.%20%D0%91%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC)                                           |**Оценка**|
+|[**Безопасность операционных систем**](https://github.com/yurashamray/mydev/tree/main/Homework/02.%20%D0%91%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC)                                           |[**Оценка**](https://github.com/yurashamray/mydev/tree/main/Homework/02.%20%D0%91%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D1%8C%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D1%85%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC)|
 |Модуль 1. Администрирование OC Windows: безопасность хоста                 |20/20 |
 |Модуль 2. Администрирование ОС Windows: безопасность сервера               |9/9   |
 |Практическое задание по ОС Windows                                         |23/23 |
