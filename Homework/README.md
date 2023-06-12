@@ -22,5 +22,5 @@
 |Модуль 2. Active Directory                                                 |30/30 |
 |Практическое задание: управление AD                                        |5/5   |
 |                                                                           |      |
-|[**Жизненный цикл ИБ**](https://github.com/yurashamray/mydev/tree/main/Homework/04.%20%D0%96%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%D1%86%D0%B8%D0%BA%D0%BB%20%D0%98%D0%91)                                                          |**Оценка**|
+|[**Жизненный цикл ИБ**](https://github.com/yurashamray/mydev/tree/main/Homework/04.%20%D0%96%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%D1%86%D0%B8%D0%BA%D0%BB%20%D0%98%D0%91)                                                          |[**Оценка**](https://github.com/yurashamray/mydev/tree/main/Homework/04.%20%D0%96%D0%B8%D0%B7%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20%D1%86%D0%B8%D0%BA%D0%BB%20%D0%98%D0%91)|
 |Модуль 1. Методологии обеспечения ИБ. Взаимодействие с регуляторами        |38/38 |
