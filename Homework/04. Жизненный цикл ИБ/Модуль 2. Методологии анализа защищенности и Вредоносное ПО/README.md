@@ -1,1 +1,3 @@
 * Модуль 2. Методологии анализа защищенности и Вредоносное ПО
+
+![Screenshot 2023-06-16 220236](https://github.com/yurashamray/mydev/assets/55129997/24bd75e3-c7bb-4e93-8207-c593b7ead80d)
