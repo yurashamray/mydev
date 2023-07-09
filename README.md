@@ -1,4 +1,5 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/yurashamray/mydev)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSulstice%2Fglobal-chem.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSulstice%2Fglobal-chem?ref=badge_shield)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yurashamray/mydev)
 
 
