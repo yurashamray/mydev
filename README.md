@@ -1,5 +1,4 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/yurashamray/mydev)
-![GitHub followers](https://img.shields.io/github/followers/yurashamray)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yurashamray/mydev)
 
 
