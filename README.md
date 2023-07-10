@@ -1,6 +1,5 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/yurashamray/mydev)
 ![GitHub last commit](https://img.shields.io/github/last-commit/yurashamray/mydev)
-[![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fyurashamray%2Fmydev&countColor=%23263759&style=flat)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fyurashamray%2Fmydev)
 
 [![mifiib](https://user-images.githubusercontent.com/55129997/218625439-7bfded59-244b-405b-8ea8-72e7ee106430.jpg)](https://skillfactory.ru/courses/kiberbezopasnost)
 ### ПРАКТИКУМ
