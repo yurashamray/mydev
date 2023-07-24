@@ -7,9 +7,11 @@
 
 [![Debian](https://img.shields.io/badge/Debian-D70A53?style=flat&logo=debian&logoColor=white)](https://www.debian.org/ "Go to Debian homepage")
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=ubuntu&logoColor=white)](https://ubuntu.com/ "Go to Ubuntu homepage")
-[![Kali](https://img.shields.io/badge/Kali-268BEE?style=flat&logo=kalilinux&logoColor=white)](https://www.kali.org/ "Go to Kali Linux homepage")
-[![Arch](https://img.shields.io/badge/Arch%20Linux-1793D1?logo=arch-linux&logoColor=fff&style=flat)](https://archlinux.org/ "Go to ArchLinux homepage")
-[![VM - VMware](https://img.shields.io/badge/VMware-gray?logo=pkgsrc&logoColor=white)](https://www.vmware.com/products/workstation-pro.html "Go to VMware Workstation homepage")
+[![Kali-Linux](https://img.shields.io/badge/Kali%20Linux-268BEE?style=flat&logo=kalilinux&logoColor=white)](https://www.kali.org/ "Go to Kali-Linux homepage")
+[![Arch](https://img.shields.io/badge/Arch%20Linux-1793D1?style=flat&logo=arch-linux&logoColor=white)](https://archlinux.org/ "Go to ArchLinux homepage")
 [![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white)](https://www.microsoft.com/ "Go to Microsoft homepage")
+[![VM - VMware](https://img.shields.io/badge/VMware-gray?style=flat&logo=pkgsrc&logoColor=white)](https://www.vmware.com/products/workstation-pro.html "Go to VMware Workstation homepage")
+[![VM - Virtualbox](https://img.shields.io/badge/VirtualBox-gray?style=flat&logo=virtualbox&logoColor=white)](https://www.virtualbox.org/ "Go to VirtualBox homepage")
+
 
 <img src="https://t.bkit.co/w_648dde3d8477e.gif" />
