@@ -3,7 +3,7 @@
 
 [![mifiib](https://user-images.githubusercontent.com/55129997/218625439-7bfded59-244b-405b-8ea8-72e7ee106430.jpg)](https://skillfactory.ru/courses/kiberbezopasnost)
 ### ПРАКТИКУМ
-![Практикум](https://skillicons.dev/icons?i=docker,kubernetes,powershell,py,vscode,bash,mysql,php,flask,ansible)
+![Практикум](https://skillicons.dev/icons?i=docker,kubernetes,powershell,py,vscode,bash,mysql,php,flask,linux,ansible)
 
 [![Debian](https://img.shields.io/badge/Debian-D70A53?style=flat&logo=debian&logoColor=white)](https://www.debian.org/ "Go to Debian homepage")
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=flat&logo=ubuntu&logoColor=white)](https://ubuntu.com/ "Go to Ubuntu homepage")
