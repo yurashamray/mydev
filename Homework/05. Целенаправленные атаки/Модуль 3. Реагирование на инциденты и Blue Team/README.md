@@ -3,5 +3,5 @@
 
 |ПРАКТИЧЕСКОЕ ЗАДАНИЕ      | ОЦЕНКА |
 |:---                      |  :---: |
-|NIPS/NIDS: Snort          |     5/5|
-|HIDS OSSEC                |     5/5|
+|HIDS OSSEC                |   5/5  |
+|NIPS/NIDS: Snort          |   5/5  |
