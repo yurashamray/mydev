@@ -2,7 +2,6 @@
 [![VM - VMware](https://img.shields.io/badge/VMware-gray?style=flat&logo=pkgsrc&logoColor=white)](https://www.vmware.com/products/workstation-pro.html "Go to VMware Workstation homepage")
 <!---![GitHub repo size](https://img.shields.io/github/repo-size/yurashamray/mydev)--->
 <!---![GitHub last commit](https://img.shields.io/github/last-commit/yurashamray/mydev)--->
-
 <!---[![mifiib](https://user-images.githubusercontent.com/55129997/218625439-7bfded59-244b-405b-8ea8-72e7ee106430.jpg)](https://skillfactory.ru/courses/kiberbezopasnost)--->
 ### ПРАКТИКУМ
 ![Практикум](https://skillicons.dev/icons?i=docker,kubernetes,powershell,py,vscode,bash,mysql,php,flask,linux,ansible)
